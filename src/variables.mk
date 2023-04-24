@@ -9,5 +9,34 @@ MAKEFILE_INCLUDE ?= $(wildcard $(MAKEFILE_PREFIX)/*/Makefile) $(wildcard $(MAKEF
 ## Makefiles to be excluded (default "makefiles/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 
-# Curl binary
+# Binaries
+CAT := cat
+CD := cd
+CHMOD := chmod
+CP := cp
 CURL := curl
+FALSE := false
+FIND := find
+GIT := git
+GREP := grep -E
+LN := ln
+LS := ls
+MKDIRP := mkdir -p
+MV := mv
+NOFAIL := 2>$(NULL) || $(TRUE)
+NPM := npm
+NULL := /dev/null
+PWD := pwd
+RM := rm
+SED := sed
+TAIL := tail
+TOUCH := touch
+TRUE := true
+# SHELL := $(shell bash --version >$(NULL) 2>&1 && echo bash|| echo sh)
+
+
+ifeq ($(CWD),)
+  CWD := $(shell pwd)
+endif
+
+
