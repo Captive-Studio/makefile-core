@@ -4,10 +4,11 @@
 
 # Generates a default makefile directory
 $(MAKEFILE_PREFIX):
-	@mkdir -p $(MAKEFILE_PREFIX)
+	@$(MKDIRP) $(MAKEFILE_PREFIX)
 
 override _self_add_module = $(or $(name), $(notdir $(url)), '')
 
+# Add git submodule
 $(MAKEFILE_PREFIX)/$(_self_add_module): .gitmodules $(MAKEFILE_PREFIX)
 	@git submodule add \
 		--force \
@@ -25,24 +26,23 @@ $(MAKEFILE_PREFIX)/$(_self_add_module): .gitmodules $(MAKEFILE_PREFIX)
 .PHONY: self-add
 self-add: makefiles/$(_self_add_module)
 
-
 # This target will
 # 1. Update makefile/core.mk
 # 2. Update all submodules
 #
 # Example : make self-update
-
+#
 ## Update all makefile modules
 .PHONY: self-update
-self-update:
+self-update: $(MAKEFILE_PREFIX)
 ifdef update
 # Actual update
+	$(info Updating makefile modules...)
 	@git submodule update
 	$(info Update finished)
 else
 # Update kernel
-	$(info Pulling change...)
-	@-$(CURL) $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
-	@$(MAKE) self-update update=true
+	$(info Updating $(MAKEFILE_CORE) from git...)
+	@-$(CURL) -fsSL $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
+	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
 endif
-
