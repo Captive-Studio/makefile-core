@@ -8,23 +8,19 @@ $(MAKEFILE_PREFIX):
 
 override _self_add_module = $(or $(name), $(notdir $(url)), '')
 
-# Add git submodule
-$(MAKEFILE_PREFIX)/$(_self_add_module): .gitmodules $(MAKEFILE_PREFIX)
-	@git submodule add \
+# Add a gitmodule into `makefiles/`. This module will be automatically include if contains `*.mk`
+#
+# Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
+#
+## url=<url> [name=<string>] Add a makefile module (as git submodule)
+.PHONY: self-add
+self-add: .gitmodules $(MAKEFILE_PREFIX)
+	@$(GIT) submodule add \
 		--force \
 		--name \
 		${_self_add_module} \
 		$(url) \
 		$(MAKEFILE_PREFIX)/${_self_add_module}
-
-
-# Add a gitmodule into `makefiles/`. This module will be automatically include if contains `*.mk`
-#
-# Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
-
-## url=<url> [name=<string>] Add a makefile module (as git submodule)
-.PHONY: self-add
-self-add: makefiles/$(_self_add_module)
 
 # This target will
 # 1. Update makefile/core.mk
