@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Stop when errors
+set -e
+
+# Default directories
+SCRIPT_DIR="$(dirname "$0")"
+cd "$SCRIPT_DIR/.."
+ROOT_DIR=$(pwd)
+
+OUTPUT_FILE="module.mk"
+
+divider() {
+  echo '#⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+}
+
+concat_source() {
+  title=$1
+  filename=$2
+  output="$ROOT_DIR/$OUTPUT_FILE"
+  divider >> $output
+  echo "# $title" >> $output
+  echo "# @see $filename" >> $output
+  divider >> $output
+  echo '' >> $output
+  cat "$ROOT_DIR/$filename" >> $output
+  echo '' >> $output
+}
+
+echo '' > "$ROOT_DIR/$OUTPUT_FILE"
+concat_source "VARIABLES" "src/variables.mk"
+concat_source "UPDATER" "src/updater.mk"
