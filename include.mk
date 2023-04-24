@@ -14,6 +14,8 @@ MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefil
 MAKEFILE_INCLUDE ?= $(wildcard $(MAKEFILE_PREFIX)/*/Makefile) $(wildcard $(MAKEFILE_PREFIX)/*/*.make) $(wildcard $(MAKEFILE_PREFIX)/*/*.mk)
 ## Makefiles to be excluded (default "makefiles/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
+## Makefile to include if exist (should be ignored by git)
+MAKEFILE_LOCAL ?= Makefile.local
 
 # Binaries
 CAT := cat
@@ -101,6 +103,11 @@ endif
 # MAIN
 # @see src/main.mk
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+#
+# Include Makefile.local if it exists
+#
+-include $(MAKEFILE_LOCAL)
 
 #
 # Includes every makefiles configured by MAKEFILE_INCLUDE excluding MAKEFILE_EXCLUDE
