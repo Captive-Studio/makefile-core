@@ -89,7 +89,6 @@ self-add: makefiles/$(_self_add_module)
 ## Update all makefile modules
 .PHONY: self-update
 self-update: $(MAKEFILE_PREFIX)
-	echo $(firstword $(MAKEFILE_LIST))
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
