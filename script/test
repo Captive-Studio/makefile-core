@@ -8,5 +8,10 @@ SCRIPT_DIR="$(dirname "$0")"
 cd "$SCRIPT_DIR/.."
 ROOT_DIR=$(pwd)
 
+# include test framework
+. "$ROOT_DIR/script/assert.sh"
+
 cd "$ROOT_DIR/test"
-make --makefile Makefile.test self-update
+assert "make --makefile Makefile.test test-included" 'test-included-done'
+assert_raises "make --makefile Makefile.test self-update" 0
+assert_end

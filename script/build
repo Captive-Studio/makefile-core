@@ -30,3 +30,4 @@ concat_source() {
 echo '' > "$ROOT_DIR/$OUTPUT_FILE"
 concat_source "VARIABLES" "src/variables.mk"
 concat_source "UPDATER" "src/updater.mk"
+concat_source "MAIN" "src/main.mk"
