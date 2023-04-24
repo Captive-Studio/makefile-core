@@ -56,7 +56,7 @@ endif
 
 # Generate a default .gitmodule file
 .gitmodules:
-	@touch .gitmodules
+	@$(TOUCH) .gitmodules
 
 # Generates a default makefile directory
 $(MAKEFILE_PREFIX):
@@ -90,7 +90,7 @@ self-update: $(MAKEFILE_PREFIX)
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
-	@git submodule update
+	@$(GIT) submodule update
 	$(info Update finished)
 else
 # Update kernel
