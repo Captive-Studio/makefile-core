@@ -8,3 +8,6 @@ MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefil
 MAKEFILE_INCLUDE ?= $(wildcard $(MAKEFILE_PREFIX)/*/Makefile) $(wildcard $(MAKEFILE_PREFIX)/*/*.make) $(wildcard $(MAKEFILE_PREFIX)/*/*.mk)
 ## Makefiles to be excluded (default "makefiles/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
+
+# Curl binary
+CURL := curl
