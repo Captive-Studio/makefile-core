@@ -1,7 +1,7 @@
 # Directory containing all makefiles
 MAKEFILE_PREFIX := ./makefiles
 # URL to the updater script
-MAKEFILE_CORE := $(MAKEFILE_PREFIX)/makefile-core.mk
+MAKEFILE_CORE := $(MAKEFILE_PREFIX)/core.mk
 # URL to the updater script
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/module.mk
 ## Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
