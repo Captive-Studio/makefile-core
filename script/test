@@ -11,7 +11,18 @@ ROOT_DIR=$(pwd)
 # include test framework
 . "$ROOT_DIR/script/assert.sh"
 
+# Example
+#
+# assert_snapshot "my-command" "my-command.out"
+assert_snapshot() {
+  snapshot_file="$ROOT_DIR/test/__snapshots__/$2"
+  if [[ "$UPDATE_SNAPSHOT" != "" || ! -f $snapshot_file ]];then
+    eval "$1" > "$snapshot_file"
+  fi
+  snapshot_content=$(cat "$snapshot_file")
+  assert "$1" "$snapshot_content"
+}
+
+# Bootstrap
 cd "$ROOT_DIR/test"
-assert "make --makefile Makefile.test test-included" 'test-included-done'
-assert_raises "make --makefile Makefile.test self-update" 0
-assert_end
+. "$ROOT_DIR/test/suite.sh"

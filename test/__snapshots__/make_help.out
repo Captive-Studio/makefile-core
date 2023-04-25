@@ -1,0 +1,18 @@
+
+  Usage:
+
+    make <target> [flags...]
+
+  Targets:
+
+    help            Show this help prompt.
+    self-add        url=<url> [name=<string>] Add a makefile module (as git submodule)
+    self-update     Update all makefile modules
+    test-included   Test included
+
+  Flags:
+
+    MAKEFILE_EXCLUDE    Makefiles to be excluded (default "makefiles/_kernel.mk")
+    MAKEFILE_INCLUDE    Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
+    MAKEFILE_LOCAL      Makefile to include if exist (should be ignored by git)
+
