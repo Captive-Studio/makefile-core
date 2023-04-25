@@ -1,4 +1,4 @@
-MAKE_TEST="make --makefile Makefile.test"
+MAKE_TEST="make --makefile Makefile.test --no-print-directory"
 
 assert "$MAKE_TEST test-included" 'test-included-done'
 assert_raises "$MAKE_TEST self-update" 0
