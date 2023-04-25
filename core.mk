@@ -140,7 +140,7 @@ help:
 	@ echo ''
 	@ echo '  Flags:'
 	@ echo ''
-	@ awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ print "   ", $$1, $$2, comment }' $(MAKEFILE_LIST) | column -t -s '?=' | sort
+	@ awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ sub(/\?\=/, "", $$2); printf "    %-24s%s\n", $$1, $$2 " " comment }' $(MAKEFILE_LIST) | sort
 	@ echo ''
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯

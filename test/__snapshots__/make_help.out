@@ -14,10 +14,10 @@
 
   Flags:
 
-    MAKEFILE_EXCLUDE          Makefiles to be excluded (default "makefiles/_kernel.mk")
-    MAKEFILE_INCLUDE          Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
-    MAKEFILE_LOCAL            Makefile to include if exist (should be ignored by git)
-    TEST_FLAG_INCLUDED        Test flag included
-    TEST_FLAG_ROOT            test                                                                                  true Test Flag Root
-    TEST_FLAG_ROOT_NO_HELP    test                                                                                  true Test Flag Root
+    MAKEFILE_EXCLUDE         Makefiles to be excluded (default "makefiles/_kernel.mk")
+    MAKEFILE_INCLUDE         Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
+    MAKEFILE_LOCAL           Makefile to include if exist (should be ignored by git)
+    TEST_FLAG_INCLUDED       Test flag included
+    TEST_FLAG_ROOT           test=true Test Flag Root
+    TEST_FLAG_ROOT_NO_HELP   test=true Test Flag Root
 
