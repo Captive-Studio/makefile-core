@@ -1,8 +1,11 @@
 include ../core.mk
 
-
-## Test Flag Root
+## test=true Test Flag Root
 TEST_FLAG_ROOT ?= test-flag-root
 
-## Test included root
-test-included-root:
+TEST_FLAG_ROOT_NO_HELP ?=
+
+## test=true Test included root
+test-root:
+
+test-root-no-help:

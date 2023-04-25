@@ -1,8 +1,7 @@
 
-## Test Flag
-TEST_FLAG ?= test-flag
+## Test flag included
+TEST_FLAG_INCLUDED ?= test-flag
 
-## Test included
+## Test target included
 test-included:
 	@echo 'test-included-done'
-
