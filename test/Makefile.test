@@ -1,1 +1,8 @@
 include ../core.mk
+
+
+## Test Flag Root
+TEST_FLAG_ROOT ?= test-flag-root
+
+## Test included root
+test-included-root:
