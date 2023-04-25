@@ -54,6 +54,11 @@ ifeq ($(CWD),)
   CWD := $(shell pwd)
 endif
 
+# Define default goal to help
+ifeq ($(.DEFAULT_GOAL),)
+  .DEFAULT_GOAL := help
+endif
+
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 # UPDATER
 # @see src/updater.mk
