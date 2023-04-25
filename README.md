@@ -106,6 +106,13 @@ my-project/
 
 TODO
 
+## Acknowledgement
+
+These repository were inspirations to build makefile-core :
+
+- <https://github.com/ianstormtaylor/makefile-help>
+- <https://github.com/tmatis/42make>
+
 ## License
 <!-- AUTO-GENERATED-CONTENT:START (PKG_JSON:template=[${license}][license-url] © ${author}) -->
 [MIT][license-url] © Captive Studio
