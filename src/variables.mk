@@ -1,3 +1,9 @@
+# Do not:
+# -  use make's built-in rules and variables
+#    (this increases performance and avoids hard-to-debug behaviour);
+# -  print "Entering directory ...";
+MAKEFLAGS += -rR --no-print-directory
+
 # Directory containing all makefiles
 MAKEFILE_PREFIX := ./makefiles
 # URL to the updater script
