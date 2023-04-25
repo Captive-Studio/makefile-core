@@ -3,7 +3,7 @@
 MAKEFLAGS += -rR
 
 # Avoid messages "Entering directory ..."
-GNUMAKEFLAGS += --no-print-directory
+MAKEFLAGS += --no-print-directory
 
 # Avoid funny character set dependencies
 unexport LC_ALL
