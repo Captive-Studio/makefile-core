@@ -42,6 +42,17 @@ include makefiles/core.mk
 ```console
 > make help
 
+  Usage:
+
+    make <target> [flags...]
+
+  Targets:
+
+    help         Show this help prompt. # ✓ Present
+    self-add     url=<url> [name=<string>] Add a makefile module (as git submodule)  # ✓ Present
+    self-update  Update all makefile modules  # ✓ Present
+
+  [...]
 ```
 
 ## Documentation
