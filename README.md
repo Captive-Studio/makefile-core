@@ -71,11 +71,24 @@ Targets :
 
 ### `make self-add`
 
-TODO
+Add a makefile module (as git submodule)
+
+Example :
+
+```console
+> make self-add url=https://github.com/ianstormtaylor/makefile-assert
+# It will add /makefiles/makefile-assert git submodule
+```
 
 ### `make self-update`
 
-TODO
+Update all makefile modules
+
+Example :
+
+```console
+> make self-update
+```
 
 ### `Makefile.local`
 
