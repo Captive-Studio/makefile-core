@@ -1,8 +1,15 @@
-# Do not:
-# -  use make's built-in rules and variables
-#    (this increases performance and avoids hard-to-debug behaviour);
-# -  print "Entering directory ...";
-MAKEFLAGS += -rR --no-print-directory
+# Disable built-in rules and variables
+# (this increases performance and avoids hard-to-debug behaviour);
+MAKEFLAGS += -rR
+
+# Avoid messages "Entering directory ..."
+MAKEFLAGS += --no-print-directory
+
+# Avoid funny character set dependencies
+unexport LC_ALL
+LC_COLLATE=C
+LC_NUMERIC=C
+export LC_COLLATE LC_NUMERIC
 
 # Directory containing all makefiles
 MAKEFILE_PREFIX := ./makefiles
