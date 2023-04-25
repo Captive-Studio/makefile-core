@@ -31,10 +31,10 @@ NULL := /dev/null
 PWD := pwd
 RM := rm
 SED := sed
+SHELL := /bin/bash
 TAIL := tail
 TOUCH := touch
 TRUE := true
-# SHELL := $(shell bash --version >$(NULL) 2>&1 && echo bash|| echo sh)
 
 ifeq ($(CWD),)
   CWD := $(shell pwd)
