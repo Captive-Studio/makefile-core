@@ -1,5 +1,7 @@
 include ../core.mk
 
+MAKEFLAGS += --no-print-directory
+
 ## test=true Test Flag Root
 TEST_FLAG_ROOT ?= test-flag-root
 
