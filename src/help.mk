@@ -1,4 +1,3 @@
-
 # Display a list of all available targets and flags
 #
 # Example : make help
@@ -27,9 +26,3 @@ help:
 	@ echo ''
 	@ awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ print "   ", $$1, $$2, comment }' $(MAKEFILE_LIST) | column -t -s '?=' | sort
 	@ echo ''
-
-
-
-
-
-

@@ -36,9 +36,6 @@ TOUCH := touch
 TRUE := true
 # SHELL := $(shell bash --version >$(NULL) 2>&1 && echo bash|| echo sh)
 
-
 ifeq ($(CWD),)
   CWD := $(shell pwd)
 endif
-
-
