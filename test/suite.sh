@@ -1,6 +1,8 @@
-assert "make --makefile Makefile.test test-included" 'test-included-done'
-assert_raises "make --makefile Makefile.test self-update" 0
+MAKE_TEST=make --makefile Makefile.test
 
-assert_snapshot "make --makefile Makefile.test help" "make_help.out"
-assert_snapshot "make --makefile Makefile.test" "make_help.out"
+assert "$MAKE_TEST test-included" 'test-included-done'
+assert_raises "$MAKE_TEST self-update" 0
+
+assert_snapshot "$MAKE_TEST help" "make_help.out"
+assert_snapshot "$MAKE_TEST" "make_help.out"
 assert_end
