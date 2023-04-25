@@ -18,16 +18,20 @@ concat_source() {
   title=$1
   filename=$2
   output="$ROOT_DIR/$OUTPUT_FILE"
-  divider >> $output
-  echo "# $title" >> $output
-  echo "# @see $filename" >> $output
-  divider >> $output
-  echo '' >> $output
+
+  if [ "$title" != "" ];then
+    divider >> $output
+    echo "# $title" >> $output
+    echo "# @see $filename" >> $output
+    divider >> $output
+    echo '' >> $output
+  fi
   cat "$ROOT_DIR/$filename" >> $output
   echo '' >> $output
 }
 
-echo '' > "$ROOT_DIR/$OUTPUT_FILE"
+> "$ROOT_DIR/$OUTPUT_FILE"
+concat_source "" "src/_header.mk"
 concat_source "VARIABLES" "src/variables.mk"
 concat_source "UPDATER" "src/updater.mk"
 concat_source "HELP" "src/help.mk"
