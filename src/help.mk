@@ -10,8 +10,8 @@
 # ```
 #
 
-## Show this help prompt.
 .PHONY: help
+## Show this help prompt.
 help:
 	@ echo
 	@ echo '  Usage:'

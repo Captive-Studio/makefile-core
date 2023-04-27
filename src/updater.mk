@@ -12,8 +12,8 @@ override _self_add_module = $(or $(name), $(notdir $(url)), '')
 #
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
-## url=<url> [name=<string>] Add a makefile module (as git submodule)
 .PHONY: self-add
+## url=<url> [name=<string>] Add a makefile module (as git submodule)
 self-add: .gitmodules $(MAKEFILE_PREFIX)
 	@$(GIT) submodule add \
 		--force \
@@ -28,8 +28,8 @@ self-add: .gitmodules $(MAKEFILE_PREFIX)
 #
 # Example : make self-update
 #
-## Update all makefile modules
 .PHONY: self-update
+## Update all makefile modules
 self-update: $(MAKEFILE_PREFIX)
 ifdef update
 # Actual update
