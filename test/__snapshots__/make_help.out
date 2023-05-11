@@ -5,11 +5,11 @@
 
   Targets:
 
-    help            Show this help.
-    self-add        url=<url> [name=<string>] Add a makefile module (as git submodule)
-    self-update     Update all makefile modules
-    test-included   Test target included
-    test-root       test=true Test included root
+    help           Show this help.
+    self-add       url=<url> [name=<string>] Add a makefile module (as git submodule)
+    self-update    Update all makefile modules
+    test-included  Test target included
+    test-root      test=true Test included root
 
   Flags:
 
