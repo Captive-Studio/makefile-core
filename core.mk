@@ -110,8 +110,7 @@ override _self_add_module = $(or $(name), $(notdir $(url)), '')
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
 .PHONY: self-add
-## url=<url> [name=<string>] Add a makefile module (as git submodule)
-self-add: .gitmodules $(MAKEFILE_PREFIX)
+self-add: .gitmodules $(MAKEFILE_PREFIX) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	@$(GIT) submodule add \
 		--force \
 		--name \
@@ -126,8 +125,7 @@ self-add: .gitmodules $(MAKEFILE_PREFIX)
 # Example : make self-update
 #
 .PHONY: self-update
-## Update all makefile modules
-self-update: $(MAKEFILE_PREFIX)
+self-update: $(MAKEFILE_PREFIX) ## Update all makefile modules
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
@@ -157,22 +155,31 @@ endif
 # ```
 #
 
+HELP_COLOR_FLAGS := # "$(BLUE)"
+HELP_COLOR_TARGETS := # "$(YELLOW)"
+HELP_COLOR_RESET := # "$(RESET)"
+
 .PHONY: help
-## Show this help prompt.
-help:
-	@ echo
-	@ echo '  Usage:'
-	@ echo ''
-	@ echo '    make <target> [flags...]'
-	@ echo ''
-	@ echo '  Targets:'
-	@ echo ''
-	@ awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+:/{ if (!match($$0, / ?= ?/)) print "   ", $$1, comment }' $(MAKEFILE_LIST) | column -t -s ':' | sort
-	@ echo ''
-	@ echo '  Flags:'
-	@ echo ''
-	@ awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ sub(/\?\=/, "", $$2); printf "    %-24s%s\n", $$1, $$2 " " comment }' $(MAKEFILE_LIST) | sort
-	@ echo ''
+help:: ## Show this help.
+	@echo ""
+	@echo "  Usage:"
+	@echo ""
+	@echo "    make ${HELP_COLOR_TARGETS}<target>${HELP_COLOR_RESET} ${HELP_COLOR_FLAGS}[flags...]${HELP_COLOR_RESET}"
+	@echo ""
+	@echo "  Targets:"
+	@echo ""
+	@sed \
+		-e '/^[a-zA-Z0-9_\-]*:.*##/!d' \
+		-e 's/:.*##\s*/:/' \
+		-e 's/^\(.\+\):\(.*\)/$(HELP_COLOR_TARGETS)\1$(HELP_COLOR_RESET):\2/' \
+		-e 's/\(.*\)/    \1/' \
+		$(MAKEFILE_LIST) | column -c2 -t -s : | sort
+# @awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+:/{ if (!match($$0, / ?= ?/)) print "   ", $$1, comment }' $(MAKEFILE_LIST) | column -t -s ':' | sort
+	@echo ''
+	@echo '  Flags:'
+	@echo ''
+	@awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ sub(/\?\=/, "", $$2); printf "    %-24s%s\n", $$1, $$2 " " comment }' $(MAKEFILE_LIST) | sort
+	@echo ''
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 # MAIN

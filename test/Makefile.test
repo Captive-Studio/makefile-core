@@ -5,7 +5,6 @@ TEST_FLAG_ROOT ?= test-flag-root
 
 TEST_FLAG_ROOT_NO_HELP ?=
 
-## test=true Test included root
-test-root:
+test-root: ## test=true Test included root
 
 test-root-no-help:

@@ -2,6 +2,5 @@
 ## Test flag included
 TEST_FLAG_INCLUDED ?= test-flag
 
-## Test target included
-test-included:
+test-included: ## Test target included
 	@echo 'test-included-done'
