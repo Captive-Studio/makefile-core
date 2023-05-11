@@ -10,9 +10,9 @@
 # ```
 #
 
-HELP_COLOR_FLAGS := # $(BLUE)
-HELP_COLOR_TARGETS := # $(YELLOW)
-HELP_COLOR_RESET := # $(RESET)
+HELP_COLOR_FLAGS := $(BLUE)
+HELP_COLOR_TARGETS := $(YELLOW)
+HELP_COLOR_RESET := $(RESET)
 
 .PHONY: help
 help:: ## Show this help.
@@ -26,7 +26,7 @@ help:: ## Show this help.
 	@$(SED) \
 		-e '/^[a-zA-Z0-9_\-]*:.*##/!d' \
 		-e 's/:.*##[[:space:]]*/|/' \
-		-e "s/^\(.\+\)|\(.*\)/$(HELP_COLOR_TARGETS)\1$(HELP_COLOR_RESET)|\2/" \
+		-e 's/\(.*\)\|\(.*\)/$(HELP_COLOR_TARGETS)\1$(HELP_COLOR_RESET)|\2/' \
 		-e 's/\(.*\)/    \1/' \
 		$(MAKEFILE_LIST) | column -c2 -t -s '|' | sort
 	@echo ''

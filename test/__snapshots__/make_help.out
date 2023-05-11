@@ -1,15 +1,15 @@
 
   Usage:
 
-    make <target> [FLAG1=...] [FLAG2=...]
+    make [33m<target>(B[m [36m[FLAG1=...] [FLAG2=...](B[m
 
   Targets:
 
-    help           Show this help.
-    self-add       url=<url> [name=<string>] Add a makefile module (as git submodule)
-    self-update    Update all makefile modules
-    test-included  Test target included
-    test-root      test=true Test included root
+    [33mhelp(B[m           Show this help.
+    [33mself-add(B[m       url=<url> [name=<string>] Add a makefile module (as git submodule)
+    [33mself-update(B[m    Update all makefile modules
+    [33mtest-included(B[m  Test target included
+    [33mtest-root(B[m      test=true Test included root
 
   Flags:
 
