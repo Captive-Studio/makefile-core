@@ -183,7 +183,7 @@ help:: ## Show this help.
 	@echo ""
 	@echo "  Targets:"
 	@echo ""
-	@sed \
+	@$(SED) \
 		-e '/^[a-zA-Z0-9_\-]*:.*##/!d' \
 		-e 's/:.*##\s*/|/' \
 		-e "s/^\(.\+\)|\(.*\)/$(HELP_COLOR_TARGETS)\1$(HELP_COLOR_RESET)|\2/" \
