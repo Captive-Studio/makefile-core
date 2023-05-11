@@ -13,17 +13,32 @@
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
 # Terminal colors
-BLUE      := $(shell tput -Txterm setaf 4)
-GREEN     := $(shell tput -Txterm setaf 2)
-TURQUOISE := $(shell tput -Txterm setaf 6)
-WHITE     := $(shell tput -Txterm setaf 7)
-YELLOW    := $(shell tput -Txterm setaf 3)
-GREY      := $(shell tput -Txterm setaf 1)
-RESET     := $(shell tput -Txterm sgr0)
-RED       := $(shell tput -Txterm setaf 1)
 
-SMUL      := $(shell tput smul)
-RMUL      := $(shell tput rmul)
+ifneq (,$(findstring xterm,${TERM}))
+	BLACK        := $(shell tput -Txterm setaf 0)
+	RED          := $(shell tput -Txterm setaf 1)
+	GREEN        := $(shell tput -Txterm setaf 2)
+	YELLOW       := $(shell tput -Txterm setaf 3)
+	LIGHTPURPLE  := $(shell tput -Txterm setaf 4)
+	PURPLE       := $(shell tput -Txterm setaf 5)
+	BLUE         := $(shell tput -Txterm setaf 6)
+	WHITE        := $(shell tput -Txterm setaf 7)
+	RESET        := $(shell tput -Txterm sgr0)
+	SMUL         := $(shell tput smul)
+	RMUL         := $(shell tput rmul)
+else
+	BLACK        := ""
+	RED          := ""
+	GREEN        := ""
+	YELLOW       := ""
+	LIGHTPURPLE  := ""
+	PURPLE       := ""
+	BLUE         := ""
+	WHITE        := ""
+	RESET        := ""
+	SMUL         := ""
+	RMUL      	 := ""
+endif
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 # VARIABLES
@@ -155,26 +170,25 @@ endif
 # ```
 #
 
-HELP_COLOR_FLAGS := # "$(BLUE)"
-HELP_COLOR_TARGETS := # "$(YELLOW)"
-HELP_COLOR_RESET := # "$(RESET)"
+HELP_COLOR_FLAGS := # $(BLUE)
+HELP_COLOR_TARGETS := # $(YELLOW)
+HELP_COLOR_RESET := # $(RESET)
 
 .PHONY: help
 help:: ## Show this help.
 	@echo ""
 	@echo "  Usage:"
 	@echo ""
-	@echo "    make ${HELP_COLOR_TARGETS}<target>${HELP_COLOR_RESET} ${HELP_COLOR_FLAGS}[flags...]${HELP_COLOR_RESET}"
+	@echo "    make $(HELP_COLOR_TARGETS)<target>$(HELP_COLOR_RESET) $(HELP_COLOR_FLAGS)[FLAG1=...] [FLAG2=...]$(HELP_COLOR_RESET)"
 	@echo ""
 	@echo "  Targets:"
 	@echo ""
 	@sed \
 		-e '/^[a-zA-Z0-9_\-]*:.*##/!d' \
-		-e 's/:.*##\s*/:/' \
-		-e 's/^\(.\+\):\(.*\)/$(HELP_COLOR_TARGETS)\1$(HELP_COLOR_RESET):\2/' \
+		-e 's/:.*##\s*/|/' \
+		-e "s/^\(.\+\)|\(.*\)/$(HELP_COLOR_TARGETS)\1$(HELP_COLOR_RESET)|\2/" \
 		-e 's/\(.*\)/    \1/' \
-		$(MAKEFILE_LIST) | column -c2 -t -s : | sort
-# @awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+:/{ if (!match($$0, / ?= ?/)) print "   ", $$1, comment }' $(MAKEFILE_LIST) | column -t -s ':' | sort
+		$(MAKEFILE_LIST) | column -c2 -t -s '|' | sort
 	@echo ''
 	@echo '  Flags:'
 	@echo ''
