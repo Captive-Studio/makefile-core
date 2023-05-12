@@ -192,7 +192,7 @@ help: ## Show this help.
 	@echo ''
 	@echo '  Flags:'
 	@echo ''
-	@awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ sub(/\?\=/, "", $$2); printf "    %-24s%s\n", $$1, $$2 " " comment }' $(MAKEFILE_LIST) | sort
+	@awk '/^##/{ comment = substr($$0,4) } /^[a-zA-Z][a-zA-Z0-9_-]+ ?\?=/{ sub(/\?\=/, "", $$2); printf "    $(HELP_COLOR_FLAGS)%s$(HELP_COLOR_RESET)|%s\n", $$1, $$2 " " comment }' $(MAKEFILE_LIST)  | column -c2 -t -s '|' | sort
 	@echo ''
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
