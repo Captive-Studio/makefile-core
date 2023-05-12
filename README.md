@@ -20,7 +20,15 @@ This project aims to standardize most common functionalities. Simply copy and in
 
 ## Usage
 
-### 1. Copy `core.mk` to your project
+### Installer (Recommended)
+
+```console
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/install.sh)"
+```
+
+### Manual (Alternate)
+
+**1. Copy `core.mk` to your project**
 
 ```shell
 my-project/
@@ -29,7 +37,7 @@ my-project/
 ├─ Makefile
 ```
 
-### 2. Include `makefiles/core.mk` in your `Makefile`
+**2. Include `makefiles/core.mk` in your `Makefile`**
 
 ```makefile
 # At the start of Makefile
@@ -37,7 +45,7 @@ my-project/
 include makefiles/core.mk
 ```
 
-### 3. Test that everything is working
+**3. Test that everything is working**
 
 ```console
 > make help
