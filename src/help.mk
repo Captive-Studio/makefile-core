@@ -16,13 +16,13 @@ HELP_COLOR_RESET := $(RESET)
 
 .PHONY: help
 help: ## Show this help.
-	@echo ""
-	@echo "  Usage:"
-	@echo ""
-	@echo "    make $(HELP_COLOR_TARGETS)<target>$(HELP_COLOR_RESET) $(HELP_COLOR_FLAGS)[FLAG1=...] [FLAG2=...]$(HELP_COLOR_RESET)"
-	@echo ""
-	@echo "  Targets:"
-	@echo ""
+	@echo ''
+	@echo '  Usage:'
+	@echo ''
+	@echo '    make $(HELP_COLOR_TARGETS)<target>$(HELP_COLOR_RESET) $(HELP_COLOR_FLAGS)[FLAG1=...] [FLAG2=...]$(HELP_COLOR_RESET)'
+	@echo ''
+	@echo '  Targets:'
+	@echo ''
 	@$(SED) \
 		-e '/^[a-zA-Z0-9_\-]*:.*##/!d' \
 		-e 's/:.*##[[:space:]]*/|/' \
