@@ -1,9 +1,5 @@
 name: Makefile
 
-env:
-  # Simulate xterm for output
-  TERM: xterm-256color
-
 on:
   merge_group: {}
   push:
