@@ -27,17 +27,17 @@ ifneq ($(TERM),)
 	SMUL         := $(shell tput smul)
 	RMUL         := $(shell tput rmul)
 else
-	BLACK        := ""
-	RED          := ""
-	GREEN        := ""
-	YELLOW       := ""
-	LIGHTPURPLE  := ""
-	PURPLE       := ""
-	BLUE         := ""
-	WHITE        := ""
-	RESET        := ""
-	SMUL         := ""
-	RMUL      	 := ""
+	BLACK        :=
+	RED          :=
+	GREEN        :=
+	YELLOW       :=
+	LIGHTPURPLE  :=
+	PURPLE       :=
+	BLUE         :=
+	WHITE        :=
+	RESET        :=
+	SMUL         :=
+	RMUL      	 :=
 endif
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯

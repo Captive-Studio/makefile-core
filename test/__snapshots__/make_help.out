@@ -1,22 +1,22 @@
 
   Usage:
 
-    make [33m<target>(B[m [36m[FLAG1=...] [FLAG2=...](B[m
+    make <target> [FLAG1=...] [FLAG2=...]
 
   Targets:
 
-    [33mhelp(B[m           Show this help.
-    [33mself-add(B[m       url=<url> [name=<string>] Add a makefile module (as git submodule)
-    [33mself-update(B[m    Update all makefile modules
-    [33mtest-included(B[m  Test target included
-    [33mtest-root(B[m      test=true Test included root
+    help           Show this help.
+    self-add       url=<url> [name=<string>] Add a makefile module (as git submodule)
+    self-update    Update all makefile modules
+    test-included  Test target included
+    test-root      test=true Test included root
 
   Flags:
 
-    [36mMAKEFILE_EXCLUDE(B[m         Makefiles to be excluded (default "makefiles/_kernel.mk")
-    [36mMAKEFILE_INCLUDE(B[m         Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
-    [36mMAKEFILE_LOCAL(B[m           Optional Makefile loaded to override locally any value (default "Makefile.local")
-    [36mTEST_FLAG_INCLUDED(B[m       Test flag included
-    [36mTEST_FLAG_ROOT(B[m           test=true Test Flag Root
-    [36mTEST_FLAG_ROOT_NO_HELP(B[m   test=true Test Flag Root
+    MAKEFILE_EXCLUDE         Makefiles to be excluded (default "makefiles/_kernel.mk")
+    MAKEFILE_INCLUDE         Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
+    MAKEFILE_LOCAL           Optional Makefile loaded to override locally any value (default "Makefile.local")
+    TEST_FLAG_INCLUDED       Test flag included
+    TEST_FLAG_ROOT           test=true Test Flag Root
+    TEST_FLAG_ROOT_NO_HELP   test=true Test Flag Root
 
