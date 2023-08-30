@@ -32,17 +32,17 @@ This project aims to standardize most common functionalities. Simply copy and in
 
 ```shell
 my-project/
-├─ makefiles/
+├─ .modules/
 │  ├─ core.mk <- COPY https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ├─ Makefile
 ```
 
-**2. Include `makefiles/core.mk` in your `Makefile`**
+**2. Include `.modules/core.mk` in your `Makefile`**
 
 ```makefile
 # At the start of Makefile
 
-include makefiles/core.mk
+include .modules/core.mk
 ```
 
 **3. Test that everything is working**
@@ -85,7 +85,7 @@ Example :
 
 ```console
 > make self-add url=https://github.com/ianstormtaylor/makefile-assert
-# It will add /makefiles/makefile-assert git submodule
+# It will add /.modules/makefile-assert git submodule
 ```
 
 ### `make self-update`
@@ -104,7 +104,7 @@ Override any behavior by creating `Makefile.local`
 
 ```shell
 my-project/
-├─ makefiles/
+├─ .modules/
 │  ├─ ...
 ├─ Makefile
 ├─ Makefile.local <- Will override

@@ -13,8 +13,8 @@
 
   Flags:
 
-    MAKEFILE_EXCLUDE         Makefiles to be excluded (default "makefiles/_kernel.mk")
-    MAKEFILE_INCLUDE         Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
+    MAKEFILE_EXCLUDE         Makefiles to be excluded (default ".modules/core.mk")
+    MAKEFILE_INCLUDE         Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
     MAKEFILE_LOCAL           Optional Makefile loaded to override locally any value (default "Makefile.local")
     TEST_FLAG_INCLUDED       Test flag included
     TEST_FLAG_ROOT           test=true Test Flag Root

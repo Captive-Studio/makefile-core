@@ -64,9 +64,9 @@ GIT_MODULES_DIR := ./.modules
 MAKEFILE_CORE := $(GIT_MODULES_DIR)/core.mk
 # URL to the updater script
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
-## Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
+## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
 MAKEFILE_INCLUDE ?= $(wildcard $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MODULES_DIR)/*/*.mk)
-## Makefiles to be excluded (default "makefiles/_kernel.mk")
+## Makefiles to be excluded (default ".modules/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
 MAKEFILE_LOCAL ?= Makefile.local
@@ -120,7 +120,7 @@ $(GIT_MODULES_DIR):
 
 override _self_add_module = $(or $(name), $(notdir $(url)), '')
 
-# Add a gitmodule into `makefiles/`. This module will be automatically include if contains `*.mk`
+# Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
 #
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #

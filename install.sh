@@ -3,7 +3,7 @@
 # Stop when errors
 set -e
 
-MAKEFILES_PREFIX="makefiles"
+MAKEFILES_PREFIX=".modules"
 MAKEFILECORE_FILE="$MAKEFILES_PREFIX/core.mk"
 INCLUDE_TEMPLATE="include $MAKEFILECORE_FILE"
 
