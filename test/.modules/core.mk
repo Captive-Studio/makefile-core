@@ -58,14 +58,14 @@ LC_COLLATE=C
 LC_NUMERIC=C
 export LC_COLLATE LC_NUMERIC
 
-# Directory containing all git modules
-GIT_MODULES_DIR := ./.modules
+# Directory containing all makefiles
+MAKEFILE_PREFIX := ./makefiles
 # URL to the updater script
-MAKEFILE_CORE := $(GIT_MODULES_DIR)/core.mk
+MAKEFILE_CORE := $(MAKEFILE_PREFIX)/core.mk
 # URL to the updater script
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default "makefiles/*/Makefile", "makefiles/*/*.{mk,make}")
-MAKEFILE_INCLUDE ?= $(wildcard $(GIT_MODULES_DIR)/*/Makefile) $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MODULES_DIR)/*/*.mk)
+MAKEFILE_INCLUDE ?= $(wildcard $(MAKEFILE_PREFIX)/*/Makefile) $(wildcard $(MAKEFILE_PREFIX)/*/*.make) $(wildcard $(MAKEFILE_PREFIX)/*/*.mk)
 ## Makefiles to be excluded (default "makefiles/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
@@ -115,8 +115,8 @@ endif
 	@$(TOUCH) .gitmodules
 
 # Generates a default makefile directory
-$(GIT_MODULES_DIR):
-	@$(MKDIRP) $(GIT_MODULES_DIR)
+$(MAKEFILE_PREFIX):
+	@$(MKDIRP) $(MAKEFILE_PREFIX)
 
 override _self_add_module = $(or $(name), $(notdir $(url)), '')
 
@@ -125,13 +125,13 @@ override _self_add_module = $(or $(name), $(notdir $(url)), '')
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
 .PHONY: self-add
-self-add: .gitmodules $(GIT_MODULES_DIR) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
+self-add: .gitmodules $(MAKEFILE_PREFIX) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	@$(GIT) submodule add \
 		--force \
 		--name \
 		${_self_add_module} \
 		$(url) \
-		$(GIT_MODULES_DIR)/${_self_add_module}
+		$(MAKEFILE_PREFIX)/${_self_add_module}
 
 # This target will
 # 1. Update makefile/core.mk
@@ -140,7 +140,7 @@ self-add: .gitmodules $(GIT_MODULES_DIR) ## url=<url> [name=<string>] Add a make
 # Example : make self-update
 #
 .PHONY: self-update
-self-update: $(GIT_MODULES_DIR) ## Update all makefile modules
+self-update: $(MAKEFILE_PREFIX) ## Update all makefile modules
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)

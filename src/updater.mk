@@ -3,8 +3,8 @@
 	@$(TOUCH) .gitmodules
 
 # Generates a default makefile directory
-$(MAKEFILE_PREFIX):
-	@$(MKDIRP) $(MAKEFILE_PREFIX)
+$(GIT_MODULES_DIR):
+	@$(MKDIRP) $(GIT_MODULES_DIR)
 
 override _self_add_module = $(or $(name), $(notdir $(url)), '')
 
@@ -13,13 +13,13 @@ override _self_add_module = $(or $(name), $(notdir $(url)), '')
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
 .PHONY: self-add
-self-add: .gitmodules $(MAKEFILE_PREFIX) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
+self-add: .gitmodules $(GIT_MODULES_DIR) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	@$(GIT) submodule add \
 		--force \
 		--name \
 		${_self_add_module} \
 		$(url) \
-		$(MAKEFILE_PREFIX)/${_self_add_module}
+		$(GIT_MODULES_DIR)/${_self_add_module}
 
 # This target will
 # 1. Update makefile/core.mk
@@ -28,7 +28,7 @@ self-add: .gitmodules $(MAKEFILE_PREFIX) ## url=<url> [name=<string>] Add a make
 # Example : make self-update
 #
 .PHONY: self-update
-self-update: $(MAKEFILE_PREFIX) ## Update all makefile modules
+self-update: $(GIT_MODULES_DIR) ## Update all makefile modules
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
