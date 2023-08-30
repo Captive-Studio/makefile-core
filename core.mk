@@ -65,7 +65,7 @@ MAKEFILE_CORE := $(GIT_MODULES_DIR)/core.mk
 # URL to the updater script
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
-MAKEFILE_INCLUDE ?= $(wildcard $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MODULES_DIR)/*/*.mk)
+MAKEFILE_INCLUDE ?= $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MODULES_DIR)/*/*.mk)
 ## Makefiles to be excluded (default ".modules/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
