@@ -1,6 +1,8 @@
 .PHONY: build
 build:
 	@ script/build
+# Update core.mk used by tests
+	@ cp core.mk test/.modules/
 
 .PHONY: test
 test: build
