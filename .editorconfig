@@ -48,8 +48,5 @@ trim_trailing_whitespace = false
 indent_size = 4
 indent_style = space
 
-[*.{mk,make}]
-indent_style = tab
-
-[Makefile]
+[Makefile, *.{mk,make}]
 indent_style = tab
