@@ -11,6 +11,11 @@ LC_COLLATE=C
 LC_NUMERIC=C
 export LC_COLLATE LC_NUMERIC
 
+# PHONY default value is empty
+ifeq ($(PHONY),)
+  PHONY :=
+endif
+
 # Directory containing all git modules
 GIT_MODULES_DIR := ./.modules
 # URL to the updater script
@@ -57,3 +62,7 @@ endif
 ifeq ($(.DEFAULT_GOAL),)
   .DEFAULT_GOAL := help
 endif
+
+# Declare the contents of the PHONY variable as phony
+# We use a variable so we can manipulate it easily
+.PHONY: $(PHONY)
