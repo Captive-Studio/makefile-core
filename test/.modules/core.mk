@@ -63,8 +63,8 @@ ifeq ($(PHONY),)
   PHONY :=
 endif
 
-# Directory containing all git modules
-GIT_MODULES_DIR := ./.modules
+# Makefile variables
+
 # URL to the updater script
 MAKEFILE_CORE := $(GIT_MODULES_DIR)/core.mk
 # URL to the updater script
@@ -77,8 +77,24 @@ MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "
 MAKEFILE_LOCAL ?= Makefile.local
 ## Main Makefile path
 MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
+
+# Project Variables
+
 ## Project root path
 PROJECT_PATH ?= $(CURDIR)
+
+# Git variables
+
+# Directory containing all git modules
+GIT_MODULES_DIR := ./.modules
+## Current git branch
+GIT_BRANCH ?= $(shell ${GIT} rev-parse --abbrev-ref HEAD)
+## Current git commit
+GIT_COMMIT ?= $(shell ${GIT} rev-parse HEAD)
+## Possible default git branches
+GIT_DEFAULT_BRANCH_LIST := "main master next dev develop $(shell ${GIT} config --get 'init.defaultBranch')"
+## Default git branch (default: main)
+GIT_DEFAULT_BRANCH ?= $(notdir $(shell ${GIT} rev-parse --abbrev-ref origin/HEAD))
 
 # Binaries
 BUNDLE := bundle
