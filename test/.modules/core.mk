@@ -77,6 +77,7 @@ MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "
 MAKEFILE_LOCAL ?= Makefile.local
 
 # Binaries
+BUNDLE := bundle
 CAT := cat
 CD := cd
 CHMOD := chmod
