@@ -30,6 +30,8 @@ MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "
 MAKEFILE_LOCAL ?= Makefile.local
 ## Main Makefile path
 MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
+## Project root path
+PROJECT_PATH ?= $(CURDIR)
 
 # Binaries
 BUNDLE := bundle
