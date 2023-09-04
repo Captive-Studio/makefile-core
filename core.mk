@@ -83,6 +83,7 @@ CD := cd
 CHMOD := chmod
 CP := cp
 CURL := curl
+DOCKER := docker
 FALSE := false
 FIND := find
 GIT := git
