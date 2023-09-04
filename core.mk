@@ -63,6 +63,37 @@ ifeq ($(PHONY),)
   PHONY :=
 endif
 
+# Binaries
+BUNDLE := bundle
+CAT := cat
+CD := cd
+CHMOD := chmod
+CP := cp
+CURL := curl
+DOCKER := docker
+FALSE := false
+FIND := find
+GIT := git
+GREP := grep -E
+LN := ln
+LS := ls
+MKDIRP := mkdir -p
+MV := mv
+NOFAIL := 2>$(NULL) || $(TRUE)
+NPM := npm
+NULL := /dev/null
+PWD := pwd
+RM := rm
+SED := sed
+SHELL := /bin/bash
+TAIL := tail
+TOUCH := touch
+TRUE := true
+
+ifeq ($(CWD),)
+  CWD := $(shell pwd)
+endif
+
 # Makefile variables
 
 # URL to the updater script
@@ -95,37 +126,6 @@ GIT_COMMIT ?= $(shell ${GIT} rev-parse HEAD)
 GIT_DEFAULT_BRANCH_LIST := "main master next dev develop $(shell ${GIT} config --get 'init.defaultBranch')"
 ## Default git branch (default: main)
 GIT_DEFAULT_BRANCH ?= $(notdir $(shell ${GIT} rev-parse --abbrev-ref origin/HEAD))
-
-# Binaries
-BUNDLE := bundle
-CAT := cat
-CD := cd
-CHMOD := chmod
-CP := cp
-CURL := curl
-DOCKER := docker
-FALSE := false
-FIND := find
-GIT := git
-GREP := grep -E
-LN := ln
-LS := ls
-MKDIRP := mkdir -p
-MV := mv
-NOFAIL := 2>$(NULL) || $(TRUE)
-NPM := npm
-NULL := /dev/null
-PWD := pwd
-RM := rm
-SED := sed
-SHELL := /bin/bash
-TAIL := tail
-TOUCH := touch
-TRUE := true
-
-ifeq ($(CWD),)
-  CWD := $(shell pwd)
-endif
 
 # Define default goal to help
 ifeq ($(.DEFAULT_GOAL),)
