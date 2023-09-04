@@ -28,6 +28,8 @@ MAKEFILE_INCLUDE ?= $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MOD
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
 MAKEFILE_LOCAL ?= Makefile.local
+## Main Makefile path
+MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 
 # Binaries
 BUNDLE := bundle
