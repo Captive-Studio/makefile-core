@@ -105,7 +105,7 @@ MAKEFILE_CORE := $(MODULES_PATH)/core.mk
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
 MAKEFILE_INCLUDE ?= $(wildcard $(MODULES_PATH)/*/*.make) $(wildcard $(MODULES_PATH)/*/*.mk)
-## Makefiles to be excluded (default ".modules/_kernel.mk")
+## Makefiles to be excluded (default "$(MAKEFILE_CORE)")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
 MAKEFILE_LOCAL ?= Makefile.local

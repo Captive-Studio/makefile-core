@@ -5,7 +5,7 @@
 
   Targets:
 
-    help           Show this help.
+    help           Show this help
     self-add       url=<url> [name=<string>] Add a makefile module (as git submodule)
     self-update    Update all makefile modules
     test-included  Test target included
@@ -13,9 +13,10 @@
 
   Flags:
 
-    MAKEFILE_EXCLUDE         Makefiles to be excluded (default ".modules/core.mk")
+    MAKEFILE_EXCLUDE         Makefiles to be excluded (default "$(MAKEFILE_CORE)")
     MAKEFILE_INCLUDE         Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
     MAKEFILE_LOCAL           Optional Makefile loaded to override locally any value (default "Makefile.local")
+    MAKEFILE_PATH            Main Makefile path
     TEST_FLAG_INCLUDED       Test flag included
     TEST_FLAG_ROOT           test=true Test Flag Root
     TEST_FLAG_ROOT_NO_HELP   test=true Test Flag Root
