@@ -15,7 +15,7 @@ HELP_COLOR_TARGETS = $(YELLOW)
 HELP_COLOR_RESET = $(RESET)
 
 .PHONY: help
-help: ## Show this help.
+help: ## Show this help
 	@echo ''
 	@echo '  Usage:'
 	@echo ''
