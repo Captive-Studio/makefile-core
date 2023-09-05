@@ -47,14 +47,17 @@ ifeq ($(CWD),)
   CWD := $(shell pwd)
 endif
 
+# Directory containing all git modules
+MODULES_PATH := .modules
+
 # Makefile variables
 
 # URL to the updater script
-MAKEFILE_CORE := $(GIT_MODULES_DIR)/core.mk
+MAKEFILE_CORE := $(MODULES_PATH)/core.mk
 # URL to the updater script
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
-MAKEFILE_INCLUDE ?= $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MODULES_DIR)/*/*.mk)
+MAKEFILE_INCLUDE ?= $(wildcard $(MODULES_PATH)/*/*.make) $(wildcard $(MODULES_PATH)/*/*.mk)
 ## Makefiles to be excluded (default ".modules/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
@@ -62,23 +65,7 @@ MAKEFILE_LOCAL ?= Makefile.local
 ## Main Makefile path
 MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 
-# Project Variables
 
-## Project root path
-PROJECT_PATH ?= $(CURDIR)
-
-# Git variables
-
-# Directory containing all git modules
-GIT_MODULES_DIR := ./.modules
-## Current git branch
-GIT_BRANCH ?= $(shell ${GIT} rev-parse --abbrev-ref HEAD)
-## Current git commit
-GIT_COMMIT ?= $(shell ${GIT} rev-parse HEAD)
-## Possible default git branches
-GIT_DEFAULT_BRANCH_LIST := "main master next dev develop $(shell ${GIT} config --get 'init.defaultBranch')"
-## Default git branch (default: main)
-GIT_DEFAULT_BRANCH ?= $(notdir $(shell ${GIT} rev-parse --abbrev-ref origin/HEAD))
 
 # Define default goal to help
 ifeq ($(.DEFAULT_GOAL),)

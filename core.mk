@@ -94,14 +94,17 @@ ifeq ($(CWD),)
   CWD := $(shell pwd)
 endif
 
+# Directory containing all git modules
+MODULES_PATH := .modules
+
 # Makefile variables
 
 # URL to the updater script
-MAKEFILE_CORE := $(GIT_MODULES_DIR)/core.mk
+MAKEFILE_CORE := $(MODULES_PATH)/core.mk
 # URL to the updater script
 MAKEFILE_UPDATER_URL := https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
-MAKEFILE_INCLUDE ?= $(wildcard $(GIT_MODULES_DIR)/*/*.make) $(wildcard $(GIT_MODULES_DIR)/*/*.mk)
+MAKEFILE_INCLUDE ?= $(wildcard $(MODULES_PATH)/*/*.make) $(wildcard $(MODULES_PATH)/*/*.mk)
 ## Makefiles to be excluded (default ".modules/_kernel.mk")
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
@@ -109,23 +112,7 @@ MAKEFILE_LOCAL ?= Makefile.local
 ## Main Makefile path
 MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 
-# Project Variables
 
-## Project root path
-PROJECT_PATH ?= $(CURDIR)
-
-# Git variables
-
-# Directory containing all git modules
-GIT_MODULES_DIR := ./.modules
-## Current git branch
-GIT_BRANCH ?= $(shell ${GIT} rev-parse --abbrev-ref HEAD)
-## Current git commit
-GIT_COMMIT ?= $(shell ${GIT} rev-parse HEAD)
-## Possible default git branches
-GIT_DEFAULT_BRANCH_LIST := "main master next dev develop $(shell ${GIT} config --get 'init.defaultBranch')"
-## Default git branch (default: main)
-GIT_DEFAULT_BRANCH ?= $(notdir $(shell ${GIT} rev-parse --abbrev-ref origin/HEAD))
 
 # Define default goal to help
 ifeq ($(.DEFAULT_GOAL),)
@@ -146,8 +133,8 @@ endif
 	@$(TOUCH) .gitmodules
 
 # Generates a default makefile directory
-$(GIT_MODULES_DIR):
-	@$(MKDIRP) $(GIT_MODULES_DIR)
+$(MODULES_PATH):
+	@$(MKDIRP) $(MODULES_PATH)
 
 override _self_add_module = $(or $(name), $(notdir $(url)), '')
 
@@ -156,13 +143,13 @@ override _self_add_module = $(or $(name), $(notdir $(url)), '')
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
 .PHONY: self-add
-self-add: .gitmodules $(GIT_MODULES_DIR) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
+self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	@$(GIT) submodule add \
 		--force \
 		--name \
 		${_self_add_module} \
 		$(url) \
-		$(GIT_MODULES_DIR)/${_self_add_module}
+		$(MODULES_PATH)/${_self_add_module}
 
 # This target will
 # 1. Update makefile/core.mk
@@ -171,7 +158,7 @@ self-add: .gitmodules $(GIT_MODULES_DIR) ## url=<url> [name=<string>] Add a make
 # Example : make self-update
 #
 .PHONY: self-update
-self-update: $(GIT_MODULES_DIR) ## Update all makefile modules
+self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
