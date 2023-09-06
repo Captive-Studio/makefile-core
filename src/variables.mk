@@ -44,7 +44,7 @@ TOUCH := touch
 TRUE := true
 
 ifeq ($(CWD),)
-  CWD := $(shell pwd)
+	CWD := $(shell pwd)
 endif
 
 # Directory containing all git modules
@@ -69,7 +69,7 @@ MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 
 # Define default goal to help
 ifeq ($(.DEFAULT_GOAL),)
-  .DEFAULT_GOAL := help
+	.DEFAULT_GOAL := help
 endif
 
 # Declare the contents of the PHONY variable as phony
