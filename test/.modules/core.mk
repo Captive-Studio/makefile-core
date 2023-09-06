@@ -121,12 +121,10 @@ PHONY += print-variables
 print-variables: ## Print all declared variables
 	@$(foreach V,$(sort $(.VARIABLES)), \
 		$(if $(filter-out environment% default automatic, \
-		$(origin $V)),$(info $V="$($V)$(RESET)" $(if $(filter-out $(value $V), $($V)),# `$(value $V)$(RESET)`,))))
+		$(origin $V)),$(info $V=$(YELLOW)"$($V)$(RESET)$(YELLOW)"$(RESET) $(if $(filter-out $(value $V), $($V)),$(BLACK)# `$(value $V)$(RESET)`,))))
 
 # Define default goal to help
-ifeq ($(.DEFAULT_GOAL),)
-	.DEFAULT_GOAL := help
-endif
+.DEFAULT_GOAL := help
 
 # Declare the contents of the PHONY variable as phony
 # We use a variable so we can manipulate it easily
