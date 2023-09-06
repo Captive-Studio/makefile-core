@@ -77,9 +77,7 @@ print-variables: ## Print all declared variables
 		$(origin $V)),$(info $V="$($V)$(RESET)" $(if $(filter-out $(value $V), $($V)),# `$(value $V)$(RESET)`,))))
 
 # Define default goal to help
-ifeq ($(.DEFAULT_GOAL),)
 	.DEFAULT_GOAL := help
-endif
 
 # Declare the contents of the PHONY variable as phony
 # We use a variable so we can manipulate it easily
