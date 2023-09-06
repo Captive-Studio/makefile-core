@@ -136,7 +136,6 @@ endif
 $(MODULES_PATH):
 	@$(MKDIRP) $(MODULES_PATH)
 
-override .self_add_module = $(or $(name), $(notdir $(url)), '')
 
 # Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
 #
@@ -144,6 +143,7 @@ override .self_add_module = $(or $(name), $(notdir $(url)), '')
 #
 .PHONY: self-add
 self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
+	_self_add_module=$(or $(name), $(notdir $(url)), '') \
 	@$(GIT) submodule add \
 		--force \
 		--name \
