@@ -6,7 +6,7 @@
 $(MODULES_PATH):
 	@$(MKDIRP) $(MODULES_PATH)
 
-override _self_add_module = $(or $(name), $(notdir $(url)), '')
+override .self_add_module = $(or $(name), $(notdir $(url)), '')
 
 # Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
 #
@@ -17,9 +17,9 @@ self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefil
 	@$(GIT) submodule add \
 		--force \
 		--name \
-		${_self_add_module} \
+		${.self_add_module} \
 		$(url) \
-		$(MODULES_PATH)/${_self_add_module}
+		$(MODULES_PATH)/${.self_add_module}
 
 # This target will
 # 1. Update makefile/core.mk
