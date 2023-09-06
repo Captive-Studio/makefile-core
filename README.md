@@ -98,6 +98,16 @@ Example :
 > make self-update
 ```
 
+### `make print-variables`
+
+Print every declared variables (often for debugging)
+
+Example :
+
+```console
+> make print-variables
+```
+
 ### `Makefile.local`
 
 Override any behavior by creating `Makefile.local`

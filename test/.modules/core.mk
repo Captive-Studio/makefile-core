@@ -113,6 +113,15 @@ MAKEFILE_LOCAL ?= Makefile.local
 MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 
 
+# This target will print every variables declared in $(.VARIABLES)
+#
+# Example : make print-variables
+#
+PHONY += print-variables
+print-variables: ## Print all declared variables
+	@$(foreach V,$(sort $(.VARIABLES)), \
+		$(if $(filter-out environment% default automatic, \
+		$(origin $V)),$(info $V="$($V)$(RESET)" $(if $(filter-out $(value $V), $($V)),# `$(value $V)$(RESET)`,))))
 
 # Define default goal to help
 ifeq ($(.DEFAULT_GOAL),)
