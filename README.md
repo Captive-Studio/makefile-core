@@ -79,7 +79,7 @@ Targets :
 
 ### `make self-add`
 
-Add a makefile module (as git submodule)
+Add a makefile module (as git submodule). If a `./module.mk` is found it will be automatically included.
 
 Example :
 
