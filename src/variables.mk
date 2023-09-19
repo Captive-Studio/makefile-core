@@ -70,11 +70,12 @@ MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 #
 # Example : make print-variables
 #
-.PHONY: print-variables
+PHONY += print-variables
 print-variables: ## Print all declared variables
 	@$(foreach V,$(sort $(.VARIABLES)), \
 		$(if $(filter-out environment% default automatic, \
 		$(origin $V)),$(info $V=$(YELLOW)"$($V)$(RESET)$(YELLOW)"$(RESET) $(if $(filter-out $(value $V), $($V)),$(BLACK)# `$(value $V)$(RESET)`,))))
+	@echo ''
 
 # Define default goal to help
 .DEFAULT_GOAL := help
