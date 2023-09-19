@@ -122,7 +122,7 @@ print-variables: ## Print all declared variables
 	@$(foreach V,$(sort $(.VARIABLES)), \
 		$(if $(filter-out environment% default automatic, \
 		$(origin $V)),$(info $V=$(YELLOW)"$($V)$(RESET)$(YELLOW)"$(RESET)$(if $(filter-out $(value $V), $($V)),$(BLACK) # `$(value $V)$(RESET)`,))))
-	@echo ''
+	@exit 0
 
 # Define default goal to help
 .DEFAULT_GOAL := help
