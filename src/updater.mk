@@ -11,7 +11,7 @@ $(MODULES_PATH):
 #
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
-.PHONY: self-add
+PHONY += self-add
 self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	_self_add_module=$(or $(name), $(notdir $(url)), '') \
 	@$(GIT) submodule add \
@@ -27,7 +27,7 @@ self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefil
 #
 # Example : make self-update
 #
-.PHONY: self-update
+PHONY += self-update
 self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
