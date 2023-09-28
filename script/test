@@ -24,9 +24,6 @@ assert_snapshot() {
   fi
   snapshot_content=$(cat "$snapshot_file")
 
-  echo "command=$test_command"
-  echo "file=$snapshot_file"
-  echo "content=$snapshot_content"
   assert "$test_command" "$snapshot_content"
 }
 
