@@ -112,7 +112,7 @@ assert() {
     [[ -z "$result" ]] && result="nothing" || result="\"$result\""
     [[ -z "$2" ]] && expected="nothing" || expected="\"$2\""
     diff_result=$(diff --color='always' <(echo "$expected") <(echo "$result")) || true
-    _assert_fail "expected '$1' to generate output \n $diff_result" "$1" "$3"
+    _assert_fail "expected '$1' to generate output $diff_result" "$1" "$3"
 }
 
 assert_raises() {
