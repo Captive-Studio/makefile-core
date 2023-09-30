@@ -1,4 +1,4 @@
-# Makefile core module _(@captive/makefile-core)_
+# Makefile core module
 
 [![License][license-image]][license-url]
 
