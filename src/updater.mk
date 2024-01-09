@@ -32,7 +32,7 @@ self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
-	@$(GIT) submodule update
+	@$(GIT) submodule update --init --remote --recursive
 	$(info Update finished)
 else
 # Update kernel
