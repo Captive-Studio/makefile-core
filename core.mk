@@ -146,6 +146,7 @@ print-variables: ## Print all declared variables
 $(MODULES_PATH):
 	@$(MKDIRP) $(MODULES_PATH)
 
+.self_add_module=$(or $(name), $(notdir $(url)), '')
 
 # Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
 #
@@ -153,13 +154,12 @@ $(MODULES_PATH):
 #
 PHONY += self-add
 self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
-	_self_add_module=$(or $(name), $(notdir $(url)), '') \
 	@$(GIT) submodule add \
 		--force \
 		--name \
-		${.self_add_module} \
+		$(.self_add_module) \
 		$(url) \
-		$(MODULES_PATH)/${.self_add_module}
+		$(MODULES_PATH)/$(.self_add_module)
 
 # This target will
 # 1. Update makefile/core.mk
