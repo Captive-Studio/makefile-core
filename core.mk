@@ -148,6 +148,14 @@ $(MODULES_PATH):
 
 .self_add_module=$(or $(name), $(notdir $(url)), '')
 
+# Install .modules
+#
+# Example : make self-install
+#
+PHONY += self-install
+self-install: ## Install makefile modules
+	@$(GIT) submodule update --init --recursive
+
 # Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
 #
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
