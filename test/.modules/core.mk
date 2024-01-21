@@ -58,11 +58,6 @@ LC_COLLATE=C
 LC_NUMERIC=C
 export LC_COLLATE LC_NUMERIC
 
-# PHONY default value is empty
-ifeq ($(PHONY),)
-  PHONY :=
-endif
-
 # Binaries
 BUNDLE := bundle
 CAT := cat
@@ -117,7 +112,7 @@ MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 #
 # Example : make print-variables
 #
-PHONY += print-variables
+.PHONY: print-variables
 print-variables: ## Print all declared variables
 	@$(foreach V,$(sort $(.VARIABLES)), \
 		$(if $(filter-out environment% default automatic, \
@@ -128,10 +123,6 @@ print-variables: ## Print all declared variables
 
 # Define default goal to help
 .DEFAULT_GOAL := help
-
-# Declare the contents of the PHONY variable as phony
-# We use a variable so we can manipulate it easily
-.PHONY: $(PHONY)
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 # UPDATER
@@ -152,7 +143,7 @@ $(MODULES_PATH):
 #
 # Example : make self-install
 #
-PHONY += self-install
+.PHONY: self-install
 self-install: ## Install makefile modules
 	@$(GIT) submodule update --init --recursive
 
@@ -160,7 +151,7 @@ self-install: ## Install makefile modules
 #
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
-PHONY += self-add
+.PHONY: self-add
 self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	@$(GIT) submodule add \
 		--force \
@@ -175,7 +166,7 @@ self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefil
 #
 # Example : make self-update
 #
-PHONY += self-update
+.PHONY: self-update
 self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
@@ -210,7 +201,7 @@ HELP_COLOR_FLAGS = $(BLUE)
 HELP_COLOR_TARGETS = $(YELLOW)
 HELP_COLOR_RESET = $(RESET)
 
-PHONY += help
+.PHONY: help
 help: ## Show this help
 	@echo ''
 	@echo '  Usage:'

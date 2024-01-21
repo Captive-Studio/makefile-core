@@ -14,7 +14,7 @@ HELP_COLOR_FLAGS = $(BLUE)
 HELP_COLOR_TARGETS = $(YELLOW)
 HELP_COLOR_RESET = $(RESET)
 
-PHONY += help
+.PHONY: help
 help: ## Show this help
 	@echo ''
 	@echo '  Usage:'

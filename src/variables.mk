@@ -11,11 +11,6 @@ LC_COLLATE=C
 LC_NUMERIC=C
 export LC_COLLATE LC_NUMERIC
 
-# PHONY default value is empty
-ifeq ($(PHONY),)
-  PHONY :=
-endif
-
 # Binaries
 BUNDLE := bundle
 CAT := cat
@@ -70,7 +65,7 @@ MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 #
 # Example : make print-variables
 #
-PHONY += print-variables
+.PHONY: print-variables
 print-variables: ## Print all declared variables
 	@$(foreach V,$(sort $(.VARIABLES)), \
 		$(if $(filter-out environment% default automatic, \
@@ -81,7 +76,3 @@ print-variables: ## Print all declared variables
 
 # Define default goal to help
 .DEFAULT_GOAL := help
-
-# Declare the contents of the PHONY variable as phony
-# We use a variable so we can manipulate it easily
-.PHONY: $(PHONY)

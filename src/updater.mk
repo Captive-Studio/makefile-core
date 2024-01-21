@@ -12,7 +12,7 @@ $(MODULES_PATH):
 #
 # Example : make self-install
 #
-PHONY += self-install
+.PHONY: self-install
 self-install: ## Install makefile modules
 	@$(GIT) submodule update --init --recursive
 
@@ -20,7 +20,7 @@ self-install: ## Install makefile modules
 #
 # Example : make self-add url=https://github.com/ianstormtaylor/makefile-help
 #
-PHONY += self-add
+.PHONY: self-add
 self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
 	@$(GIT) submodule add \
 		--force \
@@ -35,7 +35,7 @@ self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefil
 #
 # Example : make self-update
 #
-PHONY += self-update
+.PHONY: self-update
 self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
