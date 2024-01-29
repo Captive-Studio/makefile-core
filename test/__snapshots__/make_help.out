@@ -8,6 +8,7 @@
     help             Show this help
     print-variables  Print all declared variables
     self-add         url=<url> [name=<string>] Add a makefile module (as git submodule)
+    self-install     Install makefile modules
     self-update      Update all makefile modules
     test-included    Test target included
     test-root        test=true Test included root
