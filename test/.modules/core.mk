@@ -15,6 +15,7 @@
 # Terminal colors
 
 ifneq ($(TERM),)
+  BOLD         := $(shell tput bold)
 	BLACK        := $(shell tput setaf 0)
 	RED          := $(shell tput setaf 1)
 	GREEN        := $(shell tput setaf 2)
@@ -27,6 +28,7 @@ ifneq ($(TERM),)
 	SMUL         := $(shell tput smul)
 	RMUL         := $(shell tput rmul)
 else
+	BOLD         :=
 	BLACK        :=
 	RED          :=
 	GREEN        :=
