@@ -41,6 +41,13 @@ TAIL := tail
 TOUCH := touch
 TRUE := true
 
+# Use gdate on macOS
+ifeq ($(UNAME),Darwin)
+	DATE := gdate
+else
+	DATE := date
+endif
+
 ifeq ($(CWD),)
 	CWD := $(shell pwd)
 endif
