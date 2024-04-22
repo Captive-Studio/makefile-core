@@ -11,6 +11,9 @@ LC_COLLATE=C
 LC_NUMERIC=C
 export LC_COLLATE LC_NUMERIC
 
+# Read uname (Linux|Darwin|...|Unknown)
+UNAME := $(shell uname 2>/dev/null || echo Unknown)
+
 # Binaries
 BUNDLE := bundle
 CAT := cat
