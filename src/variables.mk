@@ -84,5 +84,13 @@ print-variables: ## Print all declared variables
 	)
 	@exit 0
 
+# This target will print a given variable
+#
+# Example : make print-VAR
+#
+.PHONY: print-%
+print-%: ## Print given variable after "-" (ex: print-VAR)
+	@echo $($*)
+
 # Define default goal to help
 .DEFAULT_GOAL := help
