@@ -108,6 +108,17 @@ Example :
 > make print-variables
 ```
 
+### `make print-%`
+
+Print a given variable
+
+Example :
+
+```console
+> make print-VAR
+# This will display the value of $(VAR)
+```
+
 ### `Makefile.local`
 
 Override any behavior by creating `Makefile.local`
