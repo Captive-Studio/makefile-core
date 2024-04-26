@@ -3,8 +3,7 @@
 	@$(TOUCH) .gitmodules
 
 # Generates a default makefile directory
-$(MODULES_PATH):
-	@$(MKDIRP) $(MODULES_PATH)
+$(MODULES_PATH): self-install
 
 .self_add_module=$(or $(name), $(notdir $(url)), '')
 
@@ -14,6 +13,8 @@ $(MODULES_PATH):
 #
 .PHONY: self-install
 self-install: ## Install makefile modules
+	@$(MKDIRP) $(MODULES_PATH)
+	@$(GIT) submodule sync
 	@$(GIT) submodule update --init --recursive
 
 # Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
