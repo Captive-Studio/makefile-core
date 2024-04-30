@@ -85,10 +85,13 @@ NULL := /dev/null
 PWD := pwd
 RM := rm
 SED := sed
-SHELL := /bin/bash
 TAIL := tail
 TOUCH := touch
 TRUE := true
+
+# Configure shell as bash and strict mode
+SHELL := /bin/bash
+.SHELLFLAGS := -eu -o pipefail -c
 
 # Use gdate on macOS
 ifeq ($(UNAME),Darwin)
