@@ -13,9 +13,9 @@ $(MODULES_PATH): self-install
 #
 .PHONY: self-install
 self-install: ## Install makefile modules
-	@$(MKDIRP) $(MODULES_PATH)
-	@$(GIT) submodule sync
-	@$(GIT) submodule update --init --recursive
+	$(Q)$(MKDIRP) $(MODULES_PATH)
+	$(Q)$(GIT) submodule sync
+	$(Q)$(GIT) submodule update --init --recursive
 
 # Add a gitmodule into `.modules/`. This module will be automatically include if contains `*.mk`
 #
@@ -23,7 +23,7 @@ self-install: ## Install makefile modules
 #
 .PHONY: self-add
 self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefile module (as git submodule)
-	@$(GIT) submodule add \
+	$(Q)$(GIT) submodule add \
 		--force \
 		--name \
 		$(.self_add_module) \
@@ -41,11 +41,11 @@ self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
 	$(info Updating makefile modules...)
-	@$(GIT) submodule update --init --remote --recursive
+	$(Q)$(GIT) submodule update --init --remote --recursive
 	$(info Update finished)
 else
 # Update kernel
 	$(info Updating $(MAKEFILE_CORE) from git...)
-	@-$(CURL) -fsSL $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
+	$(Q)-$(CURL) -fsSL $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
 	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
 endif

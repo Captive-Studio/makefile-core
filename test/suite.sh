@@ -11,5 +11,7 @@ assert_snapshot "$MAKE_TEST" "make_default_help.out"
 
 assert "$MAKE_TEST print-BUNDLE" "bundle"
 
+assert "$MAKE_TEST VERBOSE=true print-BUNDLE" "bundle"
+
 # assert_raises "$MAKE_TEST self-update" 0
 assert_end

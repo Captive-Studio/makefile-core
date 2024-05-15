@@ -11,6 +11,9 @@ LC_COLLATE=C
 LC_NUMERIC=C
 export LC_COLLATE LC_NUMERIC
 
+## Set the make output as verbose
+VERBOSE ?= false
+
 # Read uname (Linux|Darwin|...|Unknown)
 UNAME := $(shell uname 2>/dev/null || echo Unknown)
 
@@ -39,6 +42,15 @@ SED := sed
 TAIL := tail
 TOUCH := touch
 TRUE := true
+
+ifeq ($(strip $(VERBOSE)),false)
+	QUIET=@
+	ECHO=@echo
+else
+	QUIET=
+	ECHO=@\#
+endif
+export QUIET ECHO
 
 # Configure shell as bash and strict mode
 SHELL := /bin/bash
