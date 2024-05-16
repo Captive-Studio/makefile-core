@@ -43,14 +43,14 @@ TAIL := tail
 TOUCH := touch
 TRUE := true
 
+# Quiet flag
+# @example
+# $(Q)echo 'foo'
 ifeq ($(strip $(VERBOSE)),false)
-	QUIET=@
-	ECHO=@echo
+	Q=@
 else
-	QUIET=
-	ECHO=@\#
+	Q=
 endif
-export QUIET ECHO
 
 # Configure shell as bash and strict mode
 SHELL := /bin/bash
