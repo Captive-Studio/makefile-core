@@ -92,7 +92,7 @@ TAIL := tail
 TOUCH := touch
 TRUE := true
 
-# Quiet flag
+# Quiet flag. The command will be logged in console only when $(VERBOSE) is truthy
 # @example
 # $(Q)echo 'foo'
 ifeq ($(strip $(VERBOSE)),false)
