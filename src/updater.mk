@@ -42,7 +42,7 @@ ifdef update
 # Actual update
 	@$(call log,info,Updating makefile modules...,0)
 	$(Q)$(GIT) submodule update --init --remote --recursive
-	$(call log,info,Update finished,0)
+	@$(call log,info,Update finished,0)
 else
 # Update kernel
 	@$(call log,info,Updating $(MAKEFILE_CORE) from git...,0)
