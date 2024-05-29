@@ -40,12 +40,12 @@ self-add: .gitmodules $(MODULES_PATH) ## url=<url> [name=<string>] Add a makefil
 self-update: $(MODULES_PATH) ## Update all makefile modules
 ifdef update
 # Actual update
-	$(info Updating makefile modules...)
+	$(call log,info,Updating makefile modules...,0)
 	$(Q)$(GIT) submodule update --init --remote --recursive
-	$(info Update finished)
+	$(call log,info,Update finished,0)
 else
 # Update kernel
-	$(info Updating $(MAKEFILE_CORE) from git...)
+	$(call log,info,Updating $(MAKEFILE_CORE) from git...,0)
 	$(Q)-$(CURL) -fsSL $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
 	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
 endif
