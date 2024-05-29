@@ -15,6 +15,7 @@
 
   Flags:
 
+    LOG_LEVEL                Set the log level (debug/info/warn/error/fatal default:info)
     MAKEFILE_EXCLUDE         Makefiles to be excluded (default "$(MAKEFILE_CORE)")
     MAKEFILE_INCLUDE         Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
     MAKEFILE_LOCAL           Optional Makefile loaded to override locally any value (default "Makefile.local")
