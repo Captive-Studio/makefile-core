@@ -89,7 +89,7 @@ endef
 # @$(call log,info,"[MyCategory] Sub command with indent...",1)
 #
 define log
-$(call __log_generic,$(2),$(LOG_$(call __log_to_upper,$(1))),$(LOG_COLOR_$(call __log_to_upper,$(1))),$(LOG_HEADER_$(call __log_to_upper,$(1))),$(shell [ "$(or $(3),0)" = 0 ] || for i in $(shell seq 1 $(or $(3),0)); do echo -n '--'; done))
+$(call __log_generic,$(2),$(LOG_$(call __log_to_upper,$(1))),$(LOG_COLOR_$(call __log_to_upper,$(1))),$(LOG_HEADER_$(call __log_to_upper,$(1))),$(shell [ "$(or $(3),0)" = 0 ] || for i in $(shell seq 1 $(or $(3),0)); do echo -n '  '; done))
 endef
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
