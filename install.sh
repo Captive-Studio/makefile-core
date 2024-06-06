@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Stop when errors
-set -e
+set -euo pipefail
 
 MAKEFILES_PREFIX=".modules"
 MAKEFILECORE_FILE="$MAKEFILES_PREFIX/core.mk"
@@ -14,7 +14,7 @@ curl -fsSL -o "$MAKEFILECORE_FILE" https://raw.githubusercontent.com/Captive-Stu
 # Update Makefile
 touch Makefile
 
-if ! grep "$INCLUDE_TEMPLATE" Makefile; then
+if ! grep "$INCLUDE_TEMPLATE" Makefile > /dev/null; then
   MAKEFILE_CONTENT=$(cat Makefile)
   cat << EOF > Makefile
 # Include custom variables
@@ -26,7 +26,8 @@ $MAKEFILE_CONTENT
 EOF
 
 fi
-if [[ ! -f config.mk]]; then
+
+if [[ ! -f config.mk ]]; then
   cat << EOF > config.mk
 # Configure custom variables
 # Hint:
@@ -35,4 +36,5 @@ if [[ ! -f config.mk]]; then
 # Example :
 #   CI_PROJECT_NAME ?= my-custom-name
 EOF
+
 fi
