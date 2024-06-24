@@ -67,6 +67,18 @@ ifeq ($(CWD),)
 	CWD := $(shell pwd)
 endif
 
+# Detect NPROCS (number of processors)
+ifeq ($(NPROCS),)
+NPROCS := 1
+ifeq ($(UNAME),Linux)
+	NPROCS := $(shell nproc)
+else ifeq ($(UNAME),Darwin)
+	NPROCS := $(shell sysctl -n hw.ncpu)
+endif
+endif
+# Set number of jobs
+MAKEFLAGS += -j$(NPROCS)
+
 # Directory containing all git modules
 MODULES_PATH := .modules
 
