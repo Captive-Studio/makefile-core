@@ -76,8 +76,6 @@ else ifeq ($(UNAME),Darwin)
 	NPROCS := $(shell sysctl -n hw.ncpu)
 endif
 endif
-# Set number of jobs
-MAKEFLAGS += -j$(NPROCS)
 
 # Directory containing all git modules
 MODULES_PATH := .modules
