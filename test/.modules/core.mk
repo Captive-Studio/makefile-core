@@ -166,13 +166,13 @@ ifeq ($(CWD),)
 	CWD := $(shell pwd)
 endif
 
-# Detect NPROCS (number of processors)
-ifeq ($(NPROCS),)
-NPROCS := 1
+# Detect NPROC (number of processors)
+ifeq ($(NPROC),)
+NPROC := 1
 ifeq ($(UNAME),Linux)
-	NPROCS := $(shell nproc)
+	NPROC := $(shell nproc)
 else ifeq ($(UNAME),Darwin)
-	NPROCS := $(shell sysctl -n hw.ncpu)
+	NPROC := $(shell sysctl -n hw.ncpu)
 endif
 endif
 
