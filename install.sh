@@ -20,6 +20,10 @@ if ! grep "$INCLUDE_TEMPLATE" Makefile > /dev/null; then
 # Include custom variables
 -include config.mk
 
+# Include custom local variables
+# ⚠️ This file should never be versioned
+-include local.mk
+
 # Include Core
 $INCLUDE_TEMPLATE
 $MAKEFILE_CONTENT
