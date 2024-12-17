@@ -5,6 +5,7 @@
 
   Targets:
 
+    doctor           Check your system for potential problems.
     help             Show this help
     print-variables  Print all declared variables
     self-add         url=<url> [name=<string>] Add a makefile module (as git submodule)
