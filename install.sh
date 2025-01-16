@@ -43,6 +43,12 @@ if [[ ! -f config.mk ]]; then
 
 # Upstream for core.mk used by make self-update
 export MAKEFILE_UPDATER_URL ?= $MAKEFILE_UPDATER_URL
+
+# Project name (ex: vesta)
+export CI_PROJECT_NAME ?=
+
+# Project namespace (ex: Captive-Studio)
+export CI_PROJECT_NAMESPACE ?=
 EOF
 
 fi
