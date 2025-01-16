@@ -21,6 +21,7 @@
     MAKEFILE_INCLUDE         Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
     MAKEFILE_LOCAL           Optional Makefile loaded to override locally any value (default "Makefile.local")
     MAKEFILE_PATH            Main Makefile path
+    MAKEFILE_UPDATER_URL     URL to the updater script
     TEST_FLAG_INCLUDED       Test flag included
     TEST_FLAG_ROOT           test=true Test Flag Root
     TEST_FLAG_ROOT_NO_HELP   test=true Test Flag Root
