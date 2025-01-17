@@ -45,10 +45,10 @@ if [[ ! -f config.mk ]]; then
 export MAKEFILE_UPDATER_URL := $MAKEFILE_UPDATER_URL
 
 # Project name (ex: vesta)
-export CI_PROJECT_NAME ?=
+# export CI_PROJECT_NAME ?= <TODO>
 
 # Project namespace (ex: Captive-Studio)
-export CI_PROJECT_NAMESPACE ?=
+# export CI_PROJECT_NAMESPACE ?= <TODO>
 EOF
 
 fi
