@@ -34,9 +34,7 @@ fi
 
 if [[ ! -f config.mk ]]; then
   cat << EOF > config.mk
-# Configure custom variables
-# Hint:
-#   Use \`make help\` and \`make print-variables\` to know which variable is available
+# Makefile configuration
 
 # Upstream for core.mk used by make self-update
 export MAKEFILE_UPDATER_URL := $MAKEFILE_UPDATER_URL
