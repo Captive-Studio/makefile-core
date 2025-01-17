@@ -42,7 +42,7 @@ if [[ ! -f config.mk ]]; then
 #   MY_VAR ?= my_value
 
 # Upstream for core.mk used by make self-update
-export MAKEFILE_UPDATER_URL ?= $MAKEFILE_UPDATER_URL
+export MAKEFILE_UPDATER_URL := $MAKEFILE_UPDATER_URL
 
 # Project name (ex: vesta)
 export CI_PROJECT_NAME ?=
