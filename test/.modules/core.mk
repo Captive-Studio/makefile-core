@@ -184,7 +184,7 @@ MODULES_PATH := .modules
 # URL to the updater script
 MAKEFILE_CORE := $(MODULES_PATH)/core.mk
 ## Upstream for core.mk used by make self-update
-MAKEFILE_UPDATER_URL ?= https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
+MAKEFILE_CORE_URL ?= https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
 MAKEFILE_INCLUDE ?= $(wildcard $(MODULES_PATH)/*/module.make) $(wildcard $(MODULES_PATH)/*/module.mk)
 ## Makefiles to be excluded (default "$(MAKEFILE_CORE)")
@@ -272,7 +272,7 @@ ifdef update
 else
 # Update kernel
 	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
-	$(Q)-$(CURL) -fsSL $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
+	$(Q)-$(CURL) -fsSL $(MAKEFILE_CORE_URL) --output $(MAKEFILE_CORE)
 	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
 endif
 

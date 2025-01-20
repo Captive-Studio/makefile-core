@@ -46,6 +46,6 @@ ifdef update
 else
 # Update kernel
 	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
-	$(Q)-$(CURL) -fsSL $(MAKEFILE_UPDATER_URL) --output $(MAKEFILE_CORE)
+	$(Q)-$(CURL) -fsSL $(MAKEFILE_CORE_URL) --output $(MAKEFILE_CORE)
 	@$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
 endif

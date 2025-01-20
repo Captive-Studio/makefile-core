@@ -85,7 +85,7 @@ MODULES_PATH := .modules
 # URL to the updater script
 MAKEFILE_CORE := $(MODULES_PATH)/core.mk
 ## Upstream for core.mk used by make self-update
-MAKEFILE_UPDATER_URL ?= https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
+MAKEFILE_CORE_URL ?= https://raw.githubusercontent.com/Captive-Studio/makefile-core/main/core.mk
 ## Makefiles to be included (default ".modules/*/Makefile", ".modules/*/*.{mk,make}")
 MAKEFILE_INCLUDE ?= $(wildcard $(MODULES_PATH)/*/module.make) $(wildcard $(MODULES_PATH)/*/module.mk)
 ## Makefiles to be excluded (default "$(MAKEFILE_CORE)")
