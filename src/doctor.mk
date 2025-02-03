@@ -6,7 +6,8 @@ MAKEFILE_DOCTOR_TARGETS :=
 # To add a new check just create a new target (.doctor is a convention)
 # .doctor.my-target:
 #   //...
-# .doctor:: .doctor.my-target # Register target
+#
+# MAKEFILE_DOCTOR_TARGETS += .doctor.my-target # Register target
 #
 # Example : make doctor
 #
