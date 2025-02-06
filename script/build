@@ -33,6 +33,7 @@ concat_source() {
 > "$ROOT_DIR/$OUTPUT_FILE"
 concat_source "" "src/_header.mk"
 concat_source "CONSOLE" "src/console.mk"
+concat_source "FUNCTIONS" "src/functions.mk"
 concat_source "LOG" "src/log.mk"
 concat_source "VARIABLES" "src/variables.mk"
 concat_source "UPDATER" "src/updater.mk"
