@@ -34,3 +34,30 @@ lowercase = $(shell echo $(call escape-shell,$(1)) | tr '[:upper:]' '[:lower:]')
 # Example:
 # 	$(call uppercase,HeLlO wOrLd) # "HELLO WORLD"
 uppercase = $(shell echo $(call escape-shell,$(1)) | tr '[:lower:]' '[:upper:]')
+
+# Determine the "truthiness" of a value.
+#
+# A value is considered to be falsy if it is:
+#
+#   - empty, or
+#   - equal to "0", "N", "NO", "F" or "FALSE" after upper-casing.
+#
+# If the value is truthy then the value is returned as-is, otherwise no value
+# is returned.
+#
+# Usage:
+# 	$(call filter-false,<string>)
+#
+# Example:
+#
+#     truthy := y
+#     truthy-flag := $(call filter-false,$(truthy)) # "y"
+#
+#     falsy := n
+#     falsy-flag := $(call filter-false,$(falsy)) # <empty>
+#
+#     ifneq ($(call filter-false,$(FLAG_ENABLED)),)
+#       // will executed only when FLAG_ENABLED is truthy
+#     endif
+#
+filter-false = $(filter-out 0 n no f false,$(call lowercase,$(1)))

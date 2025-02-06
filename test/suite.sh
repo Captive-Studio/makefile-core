@@ -19,6 +19,8 @@ assert "$MAKE_TEST stub-lowercase" "hello world"
 assert "$MAKE_TEST stub-uppercase" "HELLO WORLD"
 # log
 assert "$MAKE_TEST stub-log" "=!=   Hello world!"
+# filter-false
+assert_snapshot "$MAKE_TEST stub-filter-false" "make_filter-false.out"
 
 # assert_raises "$MAKE_TEST self-update" 0
 assert_end
