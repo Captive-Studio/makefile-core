@@ -191,8 +191,8 @@ MAKEFILE_INCLUDE ?= $(wildcard $(MODULES_PATH)/*/module.make) $(wildcard $(MODUL
 MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "_"
 ## Optional Makefile loaded to override locally any value (default "Makefile.local")
 MAKEFILE_LOCAL ?= Makefile.local
-## Main Makefile path
-MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
+# Main Makefile path
+MAKEFILE_PATH := $(abspath $(firstword $(MAKEFILE_LIST)))
 
 # Make current process id
 export MAKE_PID := $(shell echo $$PPID)
