@@ -1,10 +1,10 @@
 
 # Externally define log levels
-export LOG_DEBUG := 0
-export LOG_INFO := 1
-export LOG_WARN := 2
-export LOG_ERROR := 3
-export LOG_FATAL := 4
+LOG_DEBUG := 0
+LOG_INFO := 1
+LOG_WARN := 2
+LOG_ERROR := 3
+LOG_FATAL := 4
 
 ## Set the log level (debug/info/warn/error/fatal default:info)
 LOG_LEVEL ?= info
