@@ -46,3 +46,15 @@ endef
 define log
 $(call __log_generic,$(2),$(LOG_$(call __log_to_upper,$(1))),$(LOG_COLOR_$(call __log_to_upper,$(1))),$(LOG_HEADER_$(call __log_to_upper,$(1))),$(shell [ "$(or $(3),0)" = 0 ] || for i in $(shell seq 1 $(or $(3),0)); do echo -n '  '; done))
 endef
+
+# Log a message with fatal level and exit program
+#
+# Usage:
+#   $(call panic,<message>)
+# Example:
+# 	$(call panic,Something wrong happened !)
+#
+define panic
+	$(call log,fatal,$(1))
+	exit 1
+endef
