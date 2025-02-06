@@ -11,23 +11,16 @@ test-root-no-help:
 
 .PHONY: $(filter stub-%,$(MAKECMDGOALS)))
 stub-lowercase:
-	$(Q)echo $(call lowercase,HeLlO wOrLd)
+	$(Q)echo $(call lowercase,$(input))
 
 stub-uppercase:
-	$(Q)echo $(call uppercase,HeLlO wOrLd)
+	$(Q)echo $(call uppercase,$(input))
+
+stub-slugify:
+	$(Q)echo $(call slugify,$(input))
 
 stub-log:
-	$(Q)$(call log,warn,Hello world!,1)
+	$(Q)$(call log,$(level),$(message),1)
 
 stub-filter-false:
-	$(Q)echo filter-false,1=$(call filter-false,1)
-	$(Q)echo filter-false,0=$(call filter-false,0)
-
-	$(Q)echo filter-false,''=$(call filter-false,)
-	$(Q)echo filter-false,foo=$(call filter-false,foo)
-
-	$(Q)echo filter-false,false=$(call filter-false,false)
-	$(Q)echo filter-false,true=$(call filter-false,true)
-
-	$(Q)echo filter-false,no=$(call filter-false,no)
-	$(Q)echo filter-false,yes=$(call filter-false,yes)
+	$(Q)echo $(call filter-false,$(input))

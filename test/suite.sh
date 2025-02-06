@@ -14,13 +14,26 @@ assert "$MAKE_TEST print-BUNDLE" "bundle"
 assert "$MAKE_TEST VERBOSE=true print-BUNDLE" "bundle"
 
 # lowercase
-assert "$MAKE_TEST stub-lowercase" "hello world"
+assert "$MAKE_TEST stub-lowercase input='HeLlO wOrLd'" "hello world"
 # uppercase
-assert "$MAKE_TEST stub-uppercase" "HELLO WORLD"
+assert "$MAKE_TEST stub-uppercase input='HeLlO wOrLd'" "HELLO WORLD"
+# slugify
+assert "$MAKE_TEST stub-slugify input='This is a title_blah!'" "this-is-a-title-blah-"
 # log
-assert "$MAKE_TEST stub-log" "=!=   Hello world!"
+assert "$MAKE_TEST stub-log level=warn message='Hello world!'" "=!=   Hello world!"
+assert "$MAKE_TEST stub-log level=info message='Hello world!'" "=i=   Hello world!"
 # filter-false
-assert_snapshot "$MAKE_TEST stub-filter-false" "make_filter-false.out"
+assert "$MAKE_TEST stub-filter-false input=false" ""
+assert "$MAKE_TEST stub-filter-false input=true" "true"
+
+assert "$MAKE_TEST stub-filter-false input=0" ""
+assert "$MAKE_TEST stub-filter-false input=1" "1"
+
+assert "$MAKE_TEST stub-filter-false input=no" ""
+assert "$MAKE_TEST stub-filter-false input=yes" "yes"
+
+assert "$MAKE_TEST stub-filter-false input=" ""
+assert "$MAKE_TEST stub-filter-false input=foo" "foo"
 
 # assert_raises "$MAKE_TEST self-update" 0
 assert_end

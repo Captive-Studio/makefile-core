@@ -35,6 +35,15 @@ lowercase = $(shell echo $(call escape-shell,$(1)) | tr '[:upper:]' '[:lower:]')
 # 	$(call uppercase,HeLlO wOrLd) # "HELLO WORLD"
 uppercase = $(shell echo $(call escape-shell,$(1)) | tr '[:lower:]' '[:upper:]')
 
+# Slugify a string value.
+#
+# Usage:
+# 	$(call slugify,<string>)
+#
+# Example:
+# 	$(call slugify,HeLlO wOrLd) # "hello-world"
+slugify = $(shell echo $(call escape-shell,$(1)) | tr '[:upper:]' '[:lower:]' | tr '[:punct:]' '-' | tr ' ' '-' )
+
 # Determine the "truthiness" of a value.
 #
 # A value is considered to be falsy if it is:
