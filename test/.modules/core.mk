@@ -194,12 +194,14 @@ MAKEFILE_LOCAL ?= Makefile.local
 ## Main Makefile path
 MAKEFILE_PATH ?= $(abspath $(firstword $(MAKEFILE_LIST)))
 
-# Make parent process id
-# it can be overridden so the parent make can set to the children
-export MAKE_PPID ?= $(shell echo $$PPID)
 # Make current process id
 export MAKE_PID := $(shell echo $$PPID)
-
+# Make parent process id
+# We allow overriding for internal implementation. The parent make command will provide to the children
+ifeq ($(MAKE_PPID)),)
+	MAKE_PPID := $(MAKE_PID)
+endif
+export MAKE_PPID
 
 # This target will print every variables declared in $(.VARIABLES)
 #
