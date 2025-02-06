@@ -1,4 +1,4 @@
-MAKE_TEST="make --makefile Makefile.test --no-print-directory"
+MAKE_TEST="make --makefile Makefile.test.mk --no-print-directory"
 _TERM=$TERM
 
 unset TERM;
@@ -12,6 +12,9 @@ assert_snapshot "$MAKE_TEST" "make_default_help.out"
 assert "$MAKE_TEST print-BUNDLE" "bundle"
 
 assert "$MAKE_TEST VERBOSE=true print-BUNDLE" "bundle"
+
+# lowercase
+assert "$MAKE_TEST test-lowercase" "hello world"
 
 # assert_raises "$MAKE_TEST self-update" 0
 assert_end
