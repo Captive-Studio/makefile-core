@@ -15,3 +15,6 @@ stub-lowercase:
 
 stub-uppercase:
 	@echo $(call uppercase,HeLlO wOrLd)
+
+stub-log:
+	@$(call log,warn,Hello world!,1)

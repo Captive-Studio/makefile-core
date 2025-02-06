@@ -17,6 +17,8 @@ assert "$MAKE_TEST VERBOSE=true print-BUNDLE" "bundle"
 assert "$MAKE_TEST stub-lowercase" "hello world"
 # uppercase
 assert "$MAKE_TEST stub-uppercase" "HELLO WORLD"
+# log
+assert "$MAKE_TEST stub-log" "=!=   Hello world!"
 
 # assert_raises "$MAKE_TEST self-update" 0
 assert_end
