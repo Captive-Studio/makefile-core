@@ -75,6 +75,14 @@ escape-shell = $(subst $(newline),\$(newline),$(subst ','\'',$(1)))
 # 	$(call lowercase,HeLlO wOrLd) # "hello world"
 lowercase = $(shell echo $(call escape-shell,$(1)) | tr '[:upper:]' '[:lower:]')
 
+# Upper-case a string value.
+#
+# Usage:
+# 	$(call uppercase,<string>)
+#
+# Example:
+# 	$(call uppercase,HeLlO wOrLd) # "HELLO WORLD"
+uppercase = $(shell echo $(call escape-shell,$(1)) | tr '[:lower:]' '[:upper:]')
 
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 # LOG

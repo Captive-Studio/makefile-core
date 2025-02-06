@@ -9,6 +9,9 @@ test-root: ## test=true Test included root
 
 test-root-no-help:
 
-.PHONY: $(filter test-%,$(MAKECMDGOALS)))
-test-lowercase:
+.PHONY: $(filter stub-%,$(MAKECMDGOALS)))
+stub-lowercase:
 	@echo $(call lowercase,HeLlO wOrLd)
+
+stub-uppercase:
+	@echo $(call uppercase,HeLlO wOrLd)
