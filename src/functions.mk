@@ -70,3 +70,15 @@ slugify = $(shell echo $(call escape-shell,$(1)) | tr '[:upper:]' '[:lower:]' | 
 #     endif
 #
 filter-false = $(filter-out 0 n no f false,$(call lowercase,$(1)))
+
+# Returns the first command found
+#
+#	Usage:
+# 	$(call resolve-command,<cmd1> <cmd2> ...)
+#
+# Example:
+# 	NODE_VERSION_MANAGER := $(call resolve-command,asdf nodenv nvm)
+#
+define resolve-command
+$(firstword $(foreach cmd,$(1),$(shell which $(cmd) &>/dev/null && echo $(cmd))))
+endef

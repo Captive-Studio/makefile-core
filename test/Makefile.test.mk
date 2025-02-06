@@ -24,3 +24,6 @@ stub-log:
 
 stub-filter-false:
 	$(Q)echo $(call filter-false,$(input))
+
+stub-resolve-command:
+	$(Q)echo $(call resolve-command,$(input))

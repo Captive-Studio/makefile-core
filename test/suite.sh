@@ -34,6 +34,10 @@ assert "$MAKE_TEST stub-filter-false input=yes" "yes"
 
 assert "$MAKE_TEST stub-filter-false input=" ""
 assert "$MAKE_TEST stub-filter-false input=foo" "foo"
+# resolve command
+assert "$MAKE_TEST stub-resolve-command input='not-existing make'" "make"
+assert "$MAKE_TEST stub-resolve-command input='make not-existing'" "make"
+assert "$MAKE_TEST stub-resolve-command input='not-existing'" ""
 
 # assert_raises "$MAKE_TEST self-update" 0
 assert_end
