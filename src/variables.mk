@@ -46,10 +46,12 @@ TRUE := true
 # Quiet flag. The command will be logged in console only when $(VERBOSE) is truthy
 # @example
 # $(Q)echo 'foo'
-ifeq ($(strip $(VERBOSE)),false)
-	Q=@
-else
+ifneq ($(call filter-false,$(VERBOSE)),)
+# Verbose output
 	Q=
+else
+# Quiet output
+	Q=@
 endif
 
 # Configure shell as bash and strict mode

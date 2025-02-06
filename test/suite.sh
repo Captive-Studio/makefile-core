@@ -11,7 +11,9 @@ assert_snapshot "$MAKE_TEST" "make_default_help.out"
 
 assert "$MAKE_TEST print-BUNDLE" "bundle"
 
-assert "$MAKE_TEST VERBOSE=true print-BUNDLE" "bundle"
+# VERBOSE flag
+assert "$MAKE_TEST stub-verbose" "verbose!"
+assert "$MAKE_TEST VERBOSE=true stub-verbose" "echo verbose!\nverbose!"
 
 # lowercase
 assert "$MAKE_TEST stub-lowercase input='HeLlO wOrLd'" "hello world"

@@ -10,6 +10,10 @@ test-root: ## test=true Test included root
 test-root-no-help:
 
 .PHONY: $(filter stub-%,$(MAKECMDGOALS)))
+
+stub-verbose:
+	$(Q)echo verbose!
+
 stub-lowercase:
 	$(Q)echo $(call lowercase,$(input))
 
