@@ -306,7 +306,7 @@ MAKEFILE_PATH := $(abspath $(firstword $(MAKEFILE_LIST)))
 export MAKE_PID := $(shell echo $$PPID)
 # Make parent process id
 # We allow overriding for internal implementation. The parent make command will provide to the children
-ifeq ($(MAKE_PPID)),)
+ifeq ($(MAKE_PPID),)
 	MAKE_PPID := $(MAKE_PID)
 endif
 export MAKE_PPID
