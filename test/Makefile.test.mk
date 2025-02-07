@@ -31,3 +31,14 @@ stub-filter-false:
 
 stub-resolve-command:
 	$(Q)echo $(call resolve-command,$(input))
+
+.PHONY: stub-core-hooks $(call core-hooks,.stub-core-hooks)
+stub-core-hooks: $(call core-hooks,.stub-core-hooks)
+	$(Q):
+
+.stub-core-hooks.before::
+	$(Q)echo Before stub-core-hooks !
+.stub-core-hooks:
+	$(Q)echo Run stub-core-hooks !
+.stub-core-hooks.after::
+	$(Q)echo Before stub-core-hooks !

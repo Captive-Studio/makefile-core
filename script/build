@@ -34,6 +34,7 @@ concat_source() {
 concat_source "" "src/_header.mk"
 concat_source "CONSOLE" "src/console.mk"
 concat_source "FUNCTIONS" "src/functions.mk"
+concat_source "HOOKS" "src/hooks.mk"
 concat_source "LOG" "src/log.mk"
 concat_source "VARIABLES" "src/variables.mk"
 concat_source "UPDATER" "src/updater.mk"
