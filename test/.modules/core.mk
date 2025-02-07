@@ -378,6 +378,10 @@ print-%: ## Print given variable after "-" (ex: print-VAR)
 # Define default goal to help
 .DEFAULT_GOAL := help
 
+# A common target to force rebuild
+# @see https://www.gnu.org/software/make/manual/html_node/Force-Targets.html
+FORCE: ;
+
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 # UPDATER
 # @see src/updater.mk
