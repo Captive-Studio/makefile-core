@@ -140,6 +140,12 @@ endef
 
 # Returns a list of target from $(1)
 #
+# 	-> 1. Run .before_each
+# 	-> 2. Run $(1).before
+# 	-> 3. Run $(1)
+# 	-> 4. Run $(1).after
+# 	-> 5. Run .after_each
+#
 #	Usage:
 # 	$(call core-hooks,<target>)
 #
