@@ -8,6 +8,7 @@
     doctor           Check your system for potential problems.
     eval             command=<string> Evaluate command in make environment
     help             Show this help
+    print-env        Display all env variables exported by make
     print-variables  Print all declared variables
     self-add         url=<url> [name=<string>] Add a makefile module (as git submodule)
     self-install     Install makefile modules

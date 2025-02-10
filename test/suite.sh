@@ -46,6 +46,9 @@ assert "$MAKE_TEST eval command='./script.sh'" "test-flag-root"
 # TODO: make this test pass
 # assert "$MAKE_TEST eval command='echo \$TEST_FLAG_ROOT'" "test-flag-root"
 
+# env
+assert_snapshot "$MAKE_TEST print-env | grep -v -e 'MAKE_PPID=' -e 'MAKE_PID=' -e 'PWD='" "make_print-env.out"
+
 assert_snapshot "$MAKE_TEST LOGLEVEL=debug stub-core-hooks" "make_hooks.out"
 
 # assert_raises "$MAKE_TEST self-update" 0
