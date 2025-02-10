@@ -43,6 +43,8 @@ assert "$MAKE_TEST stub-resolve-command input='not-existing'" ""
 
 # eval
 assert "$MAKE_TEST eval command='./script.sh'" "test-flag-root"
+# TODO: make this test pass
+# assert "$MAKE_TEST eval command='echo \$TEST_FLAG_ROOT'" "test-flag-root"
 
 assert_snapshot "$MAKE_TEST LOGLEVEL=debug stub-core-hooks" "make_hooks.out"
 
