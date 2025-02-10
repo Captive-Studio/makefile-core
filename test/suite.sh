@@ -41,6 +41,9 @@ assert "$MAKE_TEST stub-resolve-command input='not-existing make'" "make"
 assert "$MAKE_TEST stub-resolve-command input='make not-existing'" "make"
 assert "$MAKE_TEST stub-resolve-command input='not-existing'" ""
 
+# eval
+assert "$MAKE_TEST eval command='./script.sh'" "test-flag-root"
+
 assert_snapshot "$MAKE_TEST LOGLEVEL=debug stub-core-hooks" "make_hooks.out"
 
 # assert_raises "$MAKE_TEST self-update" 0

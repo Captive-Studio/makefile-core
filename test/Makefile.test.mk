@@ -2,6 +2,7 @@ include ../core.mk
 
 ## test=true Test Flag Root
 TEST_FLAG_ROOT ?= test-flag-root
+export TEST_FLAG_ROOT
 
 TEST_FLAG_ROOT_NO_HELP ?=
 
