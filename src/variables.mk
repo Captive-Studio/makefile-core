@@ -40,6 +40,30 @@ TAIL := tail
 TOUCH := touch
 TRUE := true
 
+# Make current process id
+export MAKE_PID := $(shell echo $$PPID)
+# Make parent process id
+# We allow overriding for internal implementation. The parent make command will provide to the children
+ifeq ($(MAKE_PPID),)
+	MAKE_PPID := $(MAKE_PID)
+endif
+export MAKE_PPID
+
+# Read uname (Linux|Darwin|...|Unknown)
+ifndef UNAME
+UNAME := $(shell uname 2>/dev/null || echo Unknown)
+endif
+
+# Read uname short name (Linux|Darwin|...|Unknown)
+ifndef OS
+OS := $(shell uname -s 2>/dev/null || echo Unknown)
+endif
+
+# Host name (ex: MacBook-Pro-13-de-Julien.local)
+ifndef HOSTNAME
+HOSTNAME := $(shell hostname)
+endif
+
 # Quiet flag. The command will be logged in console only when $(VERBOSE) is truthy
 # @example
 # $(Q)echo 'foo'
@@ -93,30 +117,6 @@ MAKEFILE_EXCLUDE ?= $(MAKEFILE_CORE) # Filtrer les fichiers qui commencent par "
 MAKEFILE_LOCAL ?= Makefile.local
 # Main Makefile path
 MAKEFILE_PATH := $(abspath $(firstword $(MAKEFILE_LIST)))
-
-# Make current process id
-export MAKE_PID := $(shell echo $$PPID)
-# Make parent process id
-# We allow overriding for internal implementation. The parent make command will provide to the children
-ifeq ($(MAKE_PPID),)
-	MAKE_PPID := $(MAKE_PID)
-endif
-export MAKE_PPID
-
-# Read uname (Linux|Darwin|...|Unknown)
-ifndef UNAME
-UNAME := $(shell uname 2>/dev/null || echo Unknown)
-endif
-
-# Read uname short name (Linux|Darwin|...|Unknown)
-ifndef OS
-OS := $(shell uname -s 2>/dev/null || echo Unknown)
-endif
-
-# Host name (ex: MacBook-Pro-13-de-Julien.local)
-ifndef HOSTNAME
-HOSTNAME := $(shell hostname)
-endif
 
 # This target will print every variables declared in $(.VARIABLES)
 #
