@@ -14,9 +14,6 @@ export LC_COLLATE LC_NUMERIC
 ## Set the make output as verbose
 VERBOSE ?= false
 
-# Read uname (Linux|Darwin|...|Unknown)
-UNAME := $(shell uname 2>/dev/null || echo Unknown)
-
 # Binaries
 BUNDLE := bundle
 CAT := cat
@@ -105,6 +102,21 @@ ifeq ($(MAKE_PPID),)
 	MAKE_PPID := $(MAKE_PID)
 endif
 export MAKE_PPID
+
+# Read uname (Linux|Darwin|...|Unknown)
+ifndef UNAME
+UNAME := $(shell uname 2>/dev/null || echo Unknown)
+endif
+
+# Read uname short name (Linux|Darwin|...|Unknown)
+ifndef OS
+OS := $(shell uname -s 2>/dev/null || echo Unknown)
+endif
+
+# Host name (ex: MacBook-Pro-13-de-Julien.local)
+ifndef HOSTNAME
+HOSTNAME := $(shell hostname)
+endif
 
 # This target will print every variables declared in $(.VARIABLES)
 #
