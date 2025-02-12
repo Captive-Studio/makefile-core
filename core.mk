@@ -483,7 +483,7 @@ self-update.core:
 		mv "$(MAKEFILE_CORE).tmp" "$(MAKEFILE_CORE)"; \
 		$(TOUCH) "$(MAKEFILE_CORE)"; \
 	else \
-		$(RM) -f "$(MAKEFILE_CORE).tmp" \
+		$(RM) -f "$(MAKEFILE_CORE).tmp"; \
 	fi
 
 # Target for makefile modules
