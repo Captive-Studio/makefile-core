@@ -55,6 +55,5 @@ endef
 # 	$(call panic,Something wrong happened !)
 #
 define panic
-	$(call log,fatal,$(1))
-	exit 1
+	$(call log,fatal,$(1));exit 1
 endef
