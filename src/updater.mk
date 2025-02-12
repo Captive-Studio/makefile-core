@@ -62,8 +62,15 @@ self-add: $(MODULES_PATH) ## url=<git-repository> [name=<string>] Install a modu
 #
 .PHONY: self-update
 self-update: ## Update all modules (in .modules/)
-ifdef update
-# Actual update
+# Update core
+	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
+	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE)"
+# Update modules
+	$(Q)$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update.modules
+
+# Target for makefile core
+.PHONY: self-update.modules
+self-update.modules
 	@$(call log,info,[Make] Updating $(MODULES_PATH)/* ...,0)
 
 ifeq ($(wildcard $(MODULES_FILE)),)
@@ -77,15 +84,3 @@ else
 	done
 	@$(call log,info,[Make] Update finished,0)
 endif
-
-else
-# Update core
-	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
-	$(Q)$(MAKE) $(MAKEFILE_CORE)
-# Update modules
-	$(Q)$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
-endif
-
-# Target for makefile core
-$(MAKEFILE_CORE): FORCE
-	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE)"
