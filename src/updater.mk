@@ -79,22 +79,13 @@ else
 endif
 
 else
-# Update kernel
+# Update core
 	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
-	$(Q)-$(CURL) -fsSL $(MAKEFILE_CORE_URL) --output $(MAKEFILE_CORE)
-
 	$(Q)$(MAKE) $(MAKEFILE_CORE)
+# Update modules
 	$(Q)$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update update=true
 endif
 
-# Temporary file
-MAKEFILE_CORE_TMP := $(MAKEFILE_CORE).tmp
-
 # Target for makefile core
 $(MAKEFILE_CORE): FORCE
-	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" -o "$(MAKEFILE_CORE_TMP)"
-	$(Q)if [ ! -f "$(MAKEFILE_CORE)" ] || ! cmp -s "$(MAKEFILE_CORE_TMP)" "$(MAKEFILE_CORE)"; then \
-		mv "$(MAKEFILE_CORE_TMP)" "$(MAKEFILE_CORE)"; \
-		touch "$(MAKEFILE_CORE)"; \
-	fi
-	$(Q)-$(RM) -f "$(MAKEFILE_CORE_TMP)";
+	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE)"
