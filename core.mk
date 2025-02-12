@@ -478,13 +478,10 @@ self-update: ## Update all modules (in .modules/)
 .PHONY: self-update.core
 self-update.core:
 	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
-	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE).tmp"
-	$(Q)if [ ! -f "$(MAKEFILE_CORE)" ] || ! cmp -s "$(MAKEFILE_CORE).tmp" "$(MAKEFILE_CORE)"; then \
-		mv "$(MAKEFILE_CORE).tmp" "$(MAKEFILE_CORE)"; \
-		$(TOUCH) "$(MAKEFILE_CORE)"; \
-	else \
-		$(RM) -f "$(MAKEFILE_CORE).tmp"; \
-	fi
+# Download file using curl
+	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE)"
+# Update index (if file was not changed, we do not care about file time modification)
+	$(Q)$(GIT) update-index --refresh $(MAKEFILE_CORE)
 
 # Target for makefile modules
 .PHONY: self-update.modules
