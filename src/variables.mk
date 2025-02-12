@@ -26,6 +26,7 @@ FALSE := false
 FIND := find
 GIT := git
 GREP := grep -E
+JQ := jq
 LN := ln
 LS := ls
 MKDIRP := mkdir -p
