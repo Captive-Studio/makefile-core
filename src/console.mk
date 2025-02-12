@@ -1,7 +1,7 @@
 # Terminal colors
 
 ifneq ($(TERM),)
-  BOLD         := $(shell tput bold)
+	BOLD         := $(shell tput bold)
 	BLACK        := $(shell tput setaf 0)
 	RED          := $(shell tput setaf 1)
 	GREEN        := $(shell tput setaf 2)
