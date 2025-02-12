@@ -70,7 +70,7 @@ self-update: ## Update all modules (in .modules/)
 
 # Target for makefile core
 .PHONY: self-update.modules
-self-update.modules
+self-update.modules:
 	@$(call log,info,[Make] Updating $(MODULES_PATH)/* ...,0)
 
 ifeq ($(wildcard $(MODULES_FILE)),)
