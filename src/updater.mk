@@ -63,12 +63,23 @@ self-add: $(MODULES_PATH) ## url=<git-repository> [name=<string>] Install a modu
 .PHONY: self-update
 self-update: ## Update all modules (in .modules/)
 # Update core
-	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
-	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE)"
+	$(Q)$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update.core
 # Update modules
 	$(Q)$(MAKE) -f $(firstword $(MAKEFILE_LIST)) self-update.modules
 
 # Target for makefile core
+.PHONY: self-update.core
+self-update.core:
+	@$(call log,info,[Make] Updating $(MAKEFILE_CORE) from git...,0)
+	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE).tmp"
+	$(Q)if [ ! -f "$(MAKEFILE_CORE)" ] || ! cmp -s "$(MAKEFILE_CORE).tmp" "$(MAKEFILE_CORE)"; then \
+		mv "$(MAKEFILE_CORE).tmp" "$(MAKEFILE_CORE)"; \
+		$(TOUCH) "$(MAKEFILE_CORE)"; \
+	else \
+		$(RM) -f "$(MAKEFILE_CORE).tmp" \
+	fi
+
+# Target for makefile modules
 .PHONY: self-update.modules
 self-update.modules:
 	@$(call log,info,[Make] Updating $(MODULES_PATH)/* ...,0)
