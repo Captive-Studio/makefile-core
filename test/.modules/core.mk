@@ -406,6 +406,8 @@ FORCE: ;
 #⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
 MODULES_FILE := module.json
+##
+MODULE_UPDATE_COMMIT_MESSAGE_PREFIX ?= 🔨 Upgrade
 
 .self_add_module=$(or $(name), $(notdir $(url)), '')
 
@@ -495,7 +497,9 @@ else
 # module.json found
 	$(Q)$(JQ) -r 'to_entries[] | "\(.key) \(.value)"' $(MODULES_FILE) | while read name repo; do \
 		$(call log,info,>> $$name,1); \
-		git subtree pull --prefix=$(MODULES_PATH)/$$name $$repo main --squash; \
+		git subtree pull --prefix=$(MODULES_PATH)/$$name $$repo main \
+			--squash \
+			--message "$(MODULE_UPDATE_COMMIT_MESSAGE_PREFIX) $$name"; \
 	done
 	@$(call log,info,[Make] Update finished,0)
 endif
