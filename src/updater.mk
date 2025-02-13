@@ -76,7 +76,7 @@ self-update.core:
 # Download file using curl
 	$(Q)-$(CURL) -sSfL "$(MAKEFILE_CORE_URL)" --output "$(MAKEFILE_CORE)"
 # Update index (if file was not changed, we do not care about file time modification)
-	$(Q)$(GIT) update-index --refresh $(MAKEFILE_CORE)
+	$(Q)-$(GIT) update-index --refresh $(MAKEFILE_CORE) || true
 # Commit changes if needed
 	$(Q)$(GIT) diff --quiet HEAD -- $(MAKEFILE_CORE) \
 		|| $(GIT) commit -m "$(MODULE_UPDATE_COMMIT_MESSAGE_PREFIX) makefile-core" $(MAKEFILE_CORE)
