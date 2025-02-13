@@ -11,5 +11,5 @@ endef
 .PHONY: env
 print-env: .before_each ## Display all env variables exported by make
 	@env | \
-    grep -E "^($(shell echo $(CI_VARIABLES) $(filter-out $(.VARIABLES_INTERNAL_HIDDEN),$(.VARIABLES_ENV)) | tr ' ' '|'))=" | \
-    sort -f
+		grep -E "^($(shell echo $(CI_VARIABLES) $(filter-out $(.VARIABLES_INTERNAL_HIDDEN),$(.VARIABLES_ENV)) | tr ' ' '|'))=" | \
+		sort -f
