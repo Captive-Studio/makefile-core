@@ -47,7 +47,7 @@ assert "$MAKE_TEST eval command='./script.sh'" "test-flag-root"
 # assert "$MAKE_TEST eval command='echo \$TEST_FLAG_ROOT'" "test-flag-root"
 
 # env
-assert_snapshot "$MAKE_TEST print-env | grep -v -e 'MAKE_PPID=' -e 'MAKE_PID=' -e 'PWD='" "make_print-env.out"
+assert_snapshot "$MAKE_TEST print-env | sed -E 's/^(MAKE_PID|MAKE_PPID|PWD|SHELL|MAKEFLAGS)=.*/\1=<redacted>/'" "make_print-env.out"
 
 assert_snapshot "$MAKE_TEST LOGLEVEL=debug stub-core-hooks" "make_hooks.out"
 
