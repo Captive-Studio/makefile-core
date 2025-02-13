@@ -287,6 +287,7 @@ MV := mv
 NOFAIL := 2>$(NULL) || $(TRUE)
 NPM := npm
 NULL := /dev/null
+PRINTENV := printenv
 PWD := pwd
 RM := rm
 SED := sed
