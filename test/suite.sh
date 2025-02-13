@@ -1,6 +1,8 @@
 MAKE_TEST="make --makefile Makefile.test.mk --no-print-directory"
 _TERM=$TERM
 
+export SHELL=${SHELL:-/bin/bash}
+
 unset TERM;
 assert "$MAKE_TEST test-included" 'test-included-done'
 
